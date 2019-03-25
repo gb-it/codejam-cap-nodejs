@@ -2,7 +2,7 @@
 
 CodeJam - SAP Cloud Application Programming Model - Node.js
 
-This repository contains the material for the CodeJam on SAP Cloud Application Programming Model with Node.js. Prequisites and recommendations for this CodeJam are documented in the [prerequisites.md](prerequisites.md) file.
+This repository contains the material for the CodeJam on SAP Cloud Application Programming Model with Node.js. Prequisites and recommendations for this CodeJam are documented in the [prerequisites](prerequisites.md) file.
 
 The material consists of a series of exercises that are to be done in order (each one building on the previous one). Each exercise is contained in a directory, with a main 'readme' file containing the core exercise instructions, with optional supporting files, such as screenshots and sample files.
 
