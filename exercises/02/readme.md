@@ -71,7 +71,7 @@ Amongst other things, you should see a `--modules` option to specify a list of m
 
 ```sh
 user@host:~
-=> cds init --modules db, srv --verbose bookshop
+=> cds init --modules db,srv --verbose bookshop
 ```
 
 You should see output that looks similar to this:
