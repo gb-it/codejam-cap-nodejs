@@ -2,9 +2,6 @@
 
 In this exercise you'll add a further entity to the data model and expose it through the service. In defining this entity you'll make use of some common definition features available to all CAP projects.
 
-- Loading a set of queries into Postman (via URL)
-- Trying OData create operations with a UUID based key field on an entity, with and without supplying a UUID
-
 
 ## Steps
 
