@@ -127,7 +127,7 @@ entity Orders : cuid, managed {
 Note the difference in capitalization here. The property name is `country` which is described by the type `Country`.
 
 
-### Redeploy and restart the service
+### Redeploy and restart the service
 
 In the same way as you've done previously, it's now time to redeploy and then restart the service.
 
