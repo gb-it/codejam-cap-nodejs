@@ -22,6 +22,53 @@ After completing these steps you'll be familiar with how you can use the CDS com
 
 The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS commandline tool `cap` which you installed in [exercise 01](../01/).
 
+The `cap` tool should be available in your executable path, having been installed as part of the Node.js `@sap/cds` package in the [previous exercise](../01/).
+
+:point_right: First, explore the `cap` commandline tool by executing it with no parameters; you will see what options are available:
+
+```sh
+user@33608459f6e1:~# cds
+
+USAGE
+
+    cds <command> [<args>]
+
+
+COMMANDS
+
+  c | compile    ...individual models (= the default)
+  d | deploy     ...data models to a database
+  s | serve      ...service models to REST clients
+  b | build      ...whole modules or projects
+  i | init       ...jump-starts a new project
+  e | env        get/set current cds configuration
+  r | repl       cds's read-eval-event-loop
+  h | help       shows usage for cds and individual commands
+  v | version    prints detailed version information
+
+  cds help <command> gives more help about each (also with --help)
+  cds <file> without <command> defaults to cds compile.
+  cds without any arguments shows this help.
+
+
+EXAMPLES
+
+  cds model.cds
+  cds compile model.cds
+  cds compile model.json --to cdl
+  cds serve cat-service
+  cds build --clean
+  cds compile --help
+```
+
+Note that with `cds init` a new project can be quickly initialized.
+
+
+Now, move to a directory where you would like to create your first CAP based project, and invoke `cds init` with parameters like this:
+
+```sh
+cds ini`kk
+
 ## Summary
 
 ## Questions
