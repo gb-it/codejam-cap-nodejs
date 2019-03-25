@@ -2,11 +2,6 @@
 
 In this exercise you'll enhance your basic bookshop project by adding to the data model and service definition, and creating a persistence layer.
 
-## Covering (partially from [notes](../orgdocs/notes.md))
-
-- Adding a new Authors entity definition
-- Looking at relationships between Authors and Books and how we describe them in CDS
-- Establishing a persistence layer (cds deploy)
 - Understanding what's going on underneath (cds compile)
 - Seeding the persistence layer and service with data via CSV
 - Introducing more entities and building relationships between them (Associations / Compositions)
@@ -15,7 +10,7 @@ In this exercise you'll enhance your basic bookshop project by adding to the dat
 
 ## Steps
 
-After completing these steps you'll have a slightly more complex OData service, with a second entity that is related to the first.
+After completing these steps you'll have a slightly more complex OData service, with a second entity that is related to the first. It will also be backed by an actual persistence layer, provided by SQLite.
 
 
 ### Add a new Authors entity to the model
@@ -105,6 +100,109 @@ Note that this is a 'to-many' relationship. Don't forget to save the file.
 :point_right: Restart the service and check the metadata document again. There should now be OData navigation properties defined between the two entities, like this:
 
 ![navigation properties](navigation-properties.png)
+
+
+### Deploy the service to a persistence layer
+
+As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now. Instead, we'll use a real database in the form of [https://sqlite.org](https://sqlite.org) and deploy the data model and service definition to it.
+
+:point_right: The `@sap/cds` package makes use of the NPM [sqlite3](https://www.npmjs.com/package/sqlite3) package, and this needs to be installed in the project first. Do this by using `npm` to install it locally (rather than globally):
+
+```sh
+user@host:~/bookshop
+=> npm install sqlite3 --save-dev
+```
+
+You should see output similar to this:
+
+```
+> sqlite3@4.0.6 install /Users/user/bookshop/node_modules/sqlite3
+> node-pre-gyp install --fallback-to-build
+
+node-pre-gyp WARN Using request for node-pre-gyp https download
+[sqlite3] Success: "/Users/user/bookshop/node_modules/sqlite3/lib/binding/node-v57-darwin-x64/node_sqlite3.node" is installed via remote
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN bookshop@1.0.0 license should be a valid SPDX license expression
+
++ sqlite3@4.0.6
+added 101 packages from 88 contributors and audited 326 packages in 5.601s
+found 0 vulnerabilities
+```
+
+Note: The `--save-dev` option here (short form: `-D`) causes the information about the dependency to the `sqlite3` package to be written to a separate section of the `package.json` file, that describes dependencies relating to the development process rather than the runtime operation. Here we're assuming that SQLite is being employed for development and testing purposes only.
+
+:point_right: Explore the `cds deploy` command like this:
+
+```sh
+user@host:~/bookshop
+=> cds deploy --help
+
+SYNOPSIS
+
+    cds deploy [ <model> ] [ --to <database> ]
+
+    Deploys the given model to a database. If no model is given it looks up
+    according configuration from package.json or .cdsrc.json in key
+    cds.requires.db.  Same for the database.
+```
+
+Use this command to deploy the data model and service definition to a new SQLite based database (databases with SQLite are simply files on the local filesystem).
+
+:point_right: Cause the deployment to a new SQLite database like this:
+
+```
+user@host:~
+=> cds deploy --to sqlite:bookshop.db
+```
+
+This should complete fairly quietly, and give a message like this:
+
+```
+- updated package.json
+```
+
+Note: If you're wondering what has been updated in `package.json`, have a look. You'll see that a new section has been created that describes the persistence layer configuration:
+
+```json
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "model": [
+          "db",
+          "srv"
+        ],
+        "credentials": {
+          "database": "bookshop.db"
+        }
+      }
+    }
+  }
+```
+
+
+### Explore the new database
+
+At this point you should have a new file `bookshop.db` in the project folder.
+
+:point_right: Have a look inside it with the `sqlite3` commandline utility; use the `.tables` command to see what has been created:
+
+```sh
+user@host:~/bookshop
+=> sqlite3 bookshop.db
+SQLite version 3.22.0 2018-01-22 18:45:57
+Enter ".help" for usage hints.
+sqlite> .tables
+CatalogService_Authors  my_bookshop_Authors
+CatalogService_Books    my_bookshop_Books
+sqlite> .quit
+user@host:~/bookshop
+```
+
+Note: The `sqlite3` commandline utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../prerequisites.md).
+
+
+
 
 ## Summary
 
