@@ -10,7 +10,7 @@ Before the CodeJam day, participants should ensure they have the following insta
 
 - Chrome (latest version) : [https://www.google.com/chrome/](https://www.google.com/chrome/)
 - Visual Studio Code : [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
-- Node : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+- Node.js : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 - SQLite : [https://sqlite.org/index.html](https://sqlite.org/index.html)
 - git : [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git)
 - Postman : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
