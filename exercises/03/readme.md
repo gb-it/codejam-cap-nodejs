@@ -74,7 +74,7 @@ entity Books {
   key ID : Integer;
   title  : String;
   stock  : Integer;
-  author : Assocation to Authors;
+  author : Association to Authors;
 }
 ```
 

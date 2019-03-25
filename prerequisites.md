@@ -1,5 +1,7 @@
 # Prerequisites
 
+There are hardware and software prerequisites for participating in this course. There are also some items that you might like to install too - not mandatory, but certainly recommended.
+
 ## Hardware
 
 Each participant should have their own laptop with enough admin privileges to be able to install software. You should also be able to access a command line shell (e.g. `cmd.exe` on Windows). The laptop should also be able to connect to the host organization's guest network for Internet access, and have enough power for the whole day.
@@ -25,3 +27,10 @@ Some familiarity with JavaScript is strongly recommended. Existing familiarity w
 Each attendee should have an SAP Cloud Platform trial account, and specifically a Cloud Foundry environment with an organization and a space defined. See the [Getting started with Cloud Foundry](https://developers.sap.com/uk/tutorials/hcp-cf-getting-started.html) tutorial for more details.
 
 Attendees wishing to prepare themselves for the day can take advantage of the tutorial [Create a Basic Node.js App](https://developers.sap.com/tutorials/cp-node-create-basic-app.html) in the SAP Developer Center.
+
+## Recommendations
+
+Further to the software prerequisites described above, we also recommend:
+
+- The [JSON Formatter extension](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en) for Google Chrome
+- The [XML Tree extension](https://chrome.google.com/webstore/detail/xml-tree/gbammbheopgpmaagmckhpjbfgdfkpadb) for Google Chrome
