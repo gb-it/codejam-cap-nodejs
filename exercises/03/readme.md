@@ -101,7 +101,7 @@ Note that this is a 'to-many' relationship. Don't forget to save the file.
 ![navigation properties](navigation-properties.png)
 
 
-### Deploy the service to a persistence layer
+### Deploy the service to a persistence layer
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now. Instead, we'll use a real database in the form of [https://sqlite.org](https://sqlite.org) and deploy the data model and service definition to it.
 
@@ -283,7 +283,8 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 
 ## Questions
 
-Why does placing CSV files in a certain place just work? (convention ove configuration philosophy)
-What happens to the content of `package.json` after a deploy?
-What are some of the differences between OData V2 and V4 with respect to query options?
+1. What happens to the content of `package.json` after a deploy?
 
+1. What are other possible targets in the compilation context?
+
+1. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
