@@ -19,11 +19,11 @@ After completing these steps you'll be familiar with how you can use the CDS com
 
 ### Initialize a new CAP project
 
-The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS commandline tool `cap` which you installed in [exercise 01](../01/).
+The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS commandline tool `cds` which you installed in [exercise 01](../01/).
 
-The `cap` tool should be available in your executable path, having been installed as part of the Node.js `@sap/cds` package in the [previous exercise](../01/).
+The `cds` tool should be available in your executable path, having been installed as part of the Node.js `@sap/cds` package in the [previous exercise](../01/).
 
-:point_right: First, explore the `cap` commandline tool by executing it with no parameters; you will see what options are available:
+:point_right: First, explore the `cds` commandline tool by executing it with no parameters; you will see what options are available:
 
 ```sh
 user@host:~
@@ -77,6 +77,7 @@ Amongst other things, you should see a `--modules` option to specify a list of m
 ```sh
 user@host:~
 => cds init --modules db, srv --verbose bookshop
+```
 
 You should see output that looks similar to this:
 
