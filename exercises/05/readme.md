@@ -68,7 +68,7 @@ user@host:~/bookshop
 The Orders entity is now available in the service (but there is no data as yet).
 
 
-### Explore common CDS features
+### Explore common CDS features
 
 When an order comes in we want to capture the date and time. If we were running in an authenticated environment (in this CodeJam we're not, but CAP supports it) we also want to capture the user associated with the creation. Similarly we want to capture modification information.
 
@@ -191,10 +191,29 @@ Content-Length: 306
 {"@odata.context":"$metadata#Orders/$entity","@odata.metadataEtag":"W/\"s2St6s/UTUxSfYEFAcOmOIuoSKQn7qxgEm65c/QqjAs=\"","ID":"d9a2ffd5-ecc4-47aa-a91f-e88f70b7adf9","modifiedAt":null,"createdAt":"2019-03-25T13:47:38Z","createdBy":"anonymous","modifiedBy":null,"quantity":5,"book_ID":421,"country_code":null}
 ```
 
+There are some OData Create operations for this Orders entity prepared for you in the form that can be imported into Postman. Do that now:
 
+:point_right: Launch Postman and import a collection using the "Import From Link" feature in this dialogue box:
+
+![importing a collection into Postman](import-collection.png)
+
+For the URL, use the link to this [postman.json](postman.json) resource.
+
+:point_right: Use the two requests in the 'exercise 05' folder in this imported collection to order books, noting how one request specifies an order ID and the other does not.
+
+![Postman request collection](postman-collection.png)
+
+
+### Examine the data in the Orders entityset
+
+Once you've made a few OData Create operations, have a look at the results in the `Orders` entityset.
+
+:point_right: Open up the [Orders entityset](http://localhost:4004/catalog/Orders) and confirm that orders have been created, noting in particular the values in the `createdAt` properties, as well as the values for the `ID` properties where you didn't specify values when making the requests.
 
 
 ## Summary
+
+At this point you have a meaningful OData service with data and against which you are now confidently performing various read and write OData operations.
 
 
 
@@ -205,5 +224,3 @@ Content-Length: 306
 1. What else is in `common.cds` and in what circumstances might it be useful?
 
 1. Are there any issues with the way we have set up the service definition right now?
-
-
