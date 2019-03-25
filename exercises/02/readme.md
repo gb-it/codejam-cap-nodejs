@@ -12,7 +12,7 @@ With Core Data & Services (CDS) as the definition language and CAP as the framew
 After completing these steps you'll be familiar with how you can use the CDS commandline tool to initialize a project with an OData service.
 
 
-### Initialize a new CAP project
+### 1. Initialize a new CAP project
 
 The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS commandline tool `cds` which you installed in [exercise 01](../01/).
 
@@ -93,7 +93,7 @@ Project creation was successful.
 ```
 
 
-### Open the project in VS Code
+### 2. Open the project in VS Code
 
 Now that the project has been initialized, it's time to explore it. The VS Code IDE is a comfortable environment in which to do so, so at this point you will open up the newly created `bookshop` directory in it.
 
@@ -107,7 +107,7 @@ user@host:~
 If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually.
 
 
-### Explore the initialized project structure
+### 3. Explore the initialized project structure
 
 The skeleton project that has been initialized is visible in VS Code. This is what it should look like (it shows also the `db/data-model.cds` file opened, which you can do manually):
 
@@ -127,14 +127,14 @@ Briefly, the directories and contents can be described thus:
 Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project and a readme file.
 
 
-### Examine the data model and service definition files
+### 4. Examine the data model and service definition files
 
 The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files.
 
 :point_right: Have a brief look inside each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted, including the definitions and the annotations (which start with `@`).
 
 
-### Start up the service
+### 5. Start up the service
 
 Yes, you've not written a single line of code yet but you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
 
@@ -172,7 +172,7 @@ You should see output similar to this:
 The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).
 
 
-### Explore the OData service
+### 6. Explore the OData service
 
 While we have no data in the OData service (we don't even have a persistence layer yet!) we can ask the OData service for the two well-known documents: the service document and the metadata document.
 

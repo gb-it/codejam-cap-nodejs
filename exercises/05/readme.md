@@ -8,7 +8,7 @@ In this exercise you'll add a further entity to the data model and expose it thr
 At the end of these steps you'll have a third entity 'Orders', and will have performed some OData Create operations upon it.
 
 
-### Add a new entity Orders
+### 1. Add a new entity Orders
 
 If this is a bookshop service, we need to be able to place orders. So you should now add a third entity to the data model, for the orders.
 
@@ -65,7 +65,7 @@ user@host:~/bookshop
 The Orders entity is now available in the service (but there is no data as yet).
 
 
-### Explore common CDS features
+### 2. Explore common CDS features
 
 When an order comes in we want to capture the date and time. If we were running in an authenticated environment (in this CodeJam we're not, but CAP supports it) we also want to capture the user associated with the creation. Similarly we want to capture modification information.
 
@@ -76,7 +76,7 @@ We can use some common CDS definitions that are available to us, built into `@sa
 ![looking at common.cds](common-cds.png)
 
 
-### Enhance the Orders entity
+### 3. Enhance the Orders entity
 
 You will now enhance the `Orders` entity using some of the common features made available in `@sap/cds/common.cds`:
 
@@ -124,7 +124,7 @@ entity Orders : cuid, managed {
 Note the difference in capitalization here. The property name is `country` which is described by the type `Country`.
 
 
-### Redeploy and restart the service
+### 4. Redeploy and restart the service
 
 In the same way as you've done previously, it's now time to redeploy and then restart the service.
 
@@ -147,7 +147,7 @@ user@host:~/bookshop
 [cds] - launched in: 629.661ms
 ```
 
-### Examine what the Orders entity looks like now
+### 5. Examine what the Orders entity looks like now
 
 Following the enhancements, it's worth taking a look at what the `Orders` entity looks like now.
 
@@ -158,7 +158,7 @@ Open the [metadata document](http://localhost:4004/catalog/$metadata) and look a
 Note the type of the `ID` property, the properties resulting from the use of the `managed` aspect, and the navigation property between the `Orders` entity and a new `sap_common_Countries` entity.
 
 
-### Create some entries in the Orders entity
+### 6. Create some entries in the Orders entity
 
 Put the new entity through its paces by performing some OData Create operations to insert orders. An OData Create operation is carried out with an HTTP POST request. If you're confident on the command line and have `curl` installed, you can do this with `curl`. Otherwise, you can use Postman (which you will have installed as part of the software [prerequisites](../../prerequisites.md).
 
