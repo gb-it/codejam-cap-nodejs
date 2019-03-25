@@ -55,15 +55,18 @@ Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localh
 [Books and Authors in the OData service](books-and-authors.png)
 
 
-### Try out some OData query operations
+### Try out some OData query operations
 
-The OData standard describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly. Try out a few Query operations on the data in the service like this:
+The OData standard describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
 
-| Query | URL |
+:point_right: Try out a few Read and Query operations on the data in the service like this:
+
+| Read / Query | URL |
 | ----- | --- |
 | Show all books | http://localhost:4004/catalog/Books |
-
-
+| Show all authors | http://localhost:4004/catalog/Authors |
+| Retrieve book with ID 421 | http://localhost:4004/catalog/Books(421) |
+| Retrieve author with ID 42 and also their books | http://localhost:4004/catalog/Authors(42)?$expand=books |
 
 
 ## Summary
