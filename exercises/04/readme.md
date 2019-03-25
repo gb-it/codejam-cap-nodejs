@@ -52,7 +52,7 @@ user@host:~/bookshop
 
 Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Books) entitysets in the OData service will show data in response to query operations.
 
-[Books and Authors in the OData service](books-and-authors.png)
+![Books and Authors in the OData service](books-and-authors.png)
 
 
 ### Try out some OData query operations
