@@ -8,7 +8,7 @@ Successfully completing this exercise relies on the hardware and software [prere
 
 After completing these steps you'll have a working local environment for development of CAP based projects with Node.js.
 
-### Install the CDS commandline tool
+### 1. Install the CDS commandline tool
 
 The CDS commandline tool is the heart of everything you do when developing CAP services locally. It is Node.js based and comes in the form of an NPM package (which further depends on other packages). The package and its dependencies are in the `@sap` namespace and are available from the [SAP NPM registry](https://blogs.sap.com/2017/05/16/sap-npm-registry-launched-making-the-lives-of-node.js-developers-easier/).
 
@@ -69,7 +69,7 @@ added 38 packages from 75 contributors in 6.015s
 
 Here you can see that the version of the `@sap/cds` package installed is 3.5.2.
 
-### Install the CDS extension for VS Code
+### 2. Install the CDS extension for VS Code
 
 To efficiently and comfortably develop CAP based services with CDS, there is an extension for the [VS Code](https://code.visualstudio.com/) IDE. This is available to download from the [SAP Development Tools](https://tools.hana.ondemand.com/) website.
 
