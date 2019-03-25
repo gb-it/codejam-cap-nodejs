@@ -6,12 +6,6 @@ One of the challenges of building a full stack app using OData has been the prod
 
 With Core Data & Services (CDS) as the definition language and CAP as the framework providing out-of-the-box services that respond to OData requests, that challenge has disappeared. It's very easy to get a basic OData service up and running in only a few minutes. Being able to rapidly get to a working metadata document has various benefits which we'll discuss at the end of this exercise.
 
-## Covering (partially from [notes](../orgdocs/notes.md))
-
-- Getting a basic OData service (at least the metadata) up quickly, without even any persistence layer (`cds run`) (basic = a single entity, no relationships or anything, probably based on the sample Books from `cds init`)
-- Small excursion into OData, showing service document, metadata document, and data resources
-- Exploring what we have in the basic project (folders, files)
-
 ## Steps
 
 After completing these steps you'll be familiar with how you can use the CDS commandline tool to initialize a project with an OData service.
@@ -128,6 +122,12 @@ Briefly, the directories and contents can be described thus:
 
 Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project and a readme file.
 
+### Examine the data model and service definition files
+
+The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files.
+
+:point_right: Have a brief look inside each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted, including the definitions and the annotations (which start with `@`).
+
 ### Start up the service
 
 Yes, you've not written a single line of code yet but you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
@@ -165,10 +165,26 @@ You should see output similar to this:
 
 The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).
 
+### Explore the OData service
+
+While we have no data in the OData service (we don't even have a persistence layer yet!) we can ask the OData service for the two well-known documents: the service document and the metadata document.
+
+:point_right: Open [http://localhost:4004](http://localhost:4004) in your browser, to see something like this:
+
+![basic OData service](basic-odata-service.png)
+
+The [catalog](http://localhost:4004/catalog) link will take you to the service document and the [$metadata](http://localhost:4004/catalog/$metadata) link will take you to the metadata document.
+
+:point_right: Explore the metadata document and familiarize yourself with the content. Note the entityset definition and the entity type describing the `Books` entity. Note also the annotations describing particular service capabilities.
+
 ## Summary
+
+With a single command, you've initialized a basic OData service project and with another command you've started it up and explored the metadata.
 
 ## Questions
 
 1. Why is there an focus on "TTM" (time to metadata) - what advantages does that bring?
 
 1. What is the difference between the data model and the service definition? Why do we need both?
+
+1. What are the annotations in the metadata document describing, and where do they come from?
