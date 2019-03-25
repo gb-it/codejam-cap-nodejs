@@ -2,7 +2,6 @@
 
 In this exercise you'll enhance your basic bookshop project by adding to the data model and service definition, and creating a persistence layer.
 
-- Understanding what's going on underneath (cds compile)
 - Seeding the persistence layer and service with data via CSV
 - Introducing more entities and building relationships between them (Associations / Compositions)
 - Trying out OData operations (CRUD+Q) on the basic service
@@ -202,10 +201,84 @@ user@host:~/bookshop
 Note: The `sqlite3` commandline utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../prerequisites.md).
 
 
+### Dig into the link between the CDS definitions and the artefacts in the database
+
+Looking at the tables in the `bookshop.db` database we see that there are two pairs of names; one prefixed with `CatalogService` and one prefixed with `my_bookshop`. If you guessed that the `CatalogService`-prefixed artefacts relate to the service definition and the `my_bookshop`-prefixed artefacts relate to the data model, you are correct.
+
+In this step you'll look briefly at what these artefacts are and how they are created.
+
+The `cds compile` command turns CDS definitions into different target outputs. In the case of our project based on SQLite, this output needs to be in the form of Data Definition Language (DDL) commands.
+
+When running the `cds deploy` command, this compilation is done as part of the process. But you can also see it explicitly.
+
+:point_right: Do that now, first for the data definitions, with:
+
+```sh
+user@host:~/bookshop
+=> cds compile db --to sql
+```
+
+This will produce SQL data definition language commands like this:
+
+```sql
+CREATE TABLE my_bookshop_Authors (
+  ID INTEGER,
+  name NVARCHAR(5000),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE my_bookshop_Books (
+  ID INTEGER,
+  title NVARCHAR(5000),
+  stock INTEGER,
+  author_ID INTEGER,
+  PRIMARY KEY(ID)
+);
+```
+
+:point_right: Now try it for the service definition:
+
+```sh
+user@host:~/bookshop
+=> cds compile srv --to sql
+```
+
+You should see output like this:
+
+```sql
+CREATE TABLE my_bookshop_Authors (
+  ID INTEGER,
+  name NVARCHAR(5000),
+  PRIMARY KEY(ID)
+);
+
+CREATE TABLE my_bookshop_Books (
+  ID INTEGER,
+  title NVARCHAR(5000),
+  stock INTEGER,
+  author_ID INTEGER,
+  PRIMARY KEY(ID)
+);
+
+CREATE VIEW CatalogService_Authors AS SELECT
+  "AUTHORS_$0".ID,
+  "AUTHORS_$0".name
+FROM my_bookshop_Authors AS "AUTHORS_$0";
+
+CREATE VIEW CatalogService_Books AS SELECT
+  "BOOKS_$0".ID,
+  "BOOKS_$0".title,
+  "BOOKS_$0".stock,
+  "BOOKS_$0".author_ID
+FROM my_bookshop_Books AS "BOOKS_$0";
+```
+
+Observe that compiling the service definition will automatically produce DDL for the entities in the data model, as the service refers to them. Observe also that the service artefacts are views, whereas the data model artefacts are tables.
 
 
 ## Summary
 
+You now have a fully functional, albeit simple, OData service backed by a persistence layer, where the data is stored in a local SQLite database file.
 
 
 ## Questions
