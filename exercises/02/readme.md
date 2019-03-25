@@ -82,9 +82,6 @@ user@host:~
 You should see output that looks similar to this:
 
 ```sh
-user@host:~
-=> cds init --modules db,srv --verbose bookshop
-
 Creating new project in directory bookshop.
 
 Copying templates for type db to bookshop/db ...
@@ -113,6 +110,24 @@ user@host:~
 
 If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually.
 
+### Explore the initialized project structure
+
+The skeleton project that has been initialized is visible in VS Code. This is what it should look like (it shows also the `db/data-model.cds` file opened, which you can do manually):
+
+![initialized project in VS Code](initialized-project-in-vscode.png)
+
+:point_right: Examine what files have been populated in the project directory structure.
+
+Briefly, the directories and contents can be described thus:
+
+| Directory      | Contents |
+| -------------- | -------- |
+| `.vscode`      | VS Code specific files for launch configurations (useful for debugging) |
+| `db`           | Where the data models (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules db` option will have a basic data model file in the form of `data-model.cds` with a small sample definition, like here |
+| `node_modules` | This is the normal place where NPM packages (modules) are to be found in a Node.js based project |
+| `srv`          | Where the service definitions (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules srv` option will have a basic service definition file in the form of `cat-service.cds` with a small service definition, like here |
+
+Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project and a readme file.
 
 
 ## Summary
