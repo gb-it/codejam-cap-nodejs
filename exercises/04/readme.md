@@ -14,7 +14,7 @@ In this exercise you'll seed the persistence layer with data from CSV files, whi
 After completing these steps you'll have some authors and books data in your OData service and will have explored that data in the browser with OData query operations.
 
 
-### Bring sample CSV files in the project
+### 1. Bring sample CSV files in the project
 
 SAP Cloud Application Programming Model adopts a "convention over configuration" approach in many areas, one of which is the automatic recognition and loading of data from CSV files during a deployment. In this step you'll create a `csv/` directory in the `db/` directory, add two CSV files (one for each of the entities) and re-deploy. The deployment process will spot the CSV files and load the contents into the tables in the persistence layer.
 
@@ -25,7 +25,7 @@ Your directory structure should then look something like this (the screenshot al
 ![the CSV files in the right place](csv-files.png)
 
 
-### Redeploy to the persistence layer
+### 2. Redeploy to the persistence layer
 
 :point_right: The CSV files are discovered and used during a `cds deploy`, so deploy again thus:
 
@@ -41,7 +41,7 @@ This time you should see an extra message:
 ```
 
 
-### Restart the service
+### 3. Restart the service
 
 :point_right: Now restart the service thus:
 
@@ -55,7 +55,7 @@ Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localh
 ![Books and Authors in the OData service](books-and-authors.png)
 
 
-### Try out some OData query operations
+### 4. Try out some OData query operations
 
 The OData standard describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
 

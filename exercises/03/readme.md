@@ -12,7 +12,7 @@ In this exercise you'll enhance your basic bookshop project by adding to the dat
 After completing these steps you'll have a slightly more complex OData service, with a second entity that is related to the first. It will also be backed by an actual persistence layer, provided by SQLite.
 
 
-### Add a new Authors entity to the model
+### 1. Add a new Authors entity to the model
 
 Currently the data model is extremely simple. In this step you'll add a second entity 'Authors'.
 
@@ -41,7 +41,7 @@ user@host:~/bookshop
 You're right. It's not there.
 
 
-### Expose the Authors entity in the service
+### 2. Expose the Authors entity in the service
 
 While there is now a second entity definition in the data model, it is not exposed in the existing service. In this step, you'll remedy that.
 
@@ -63,7 +63,7 @@ service CatalogService {
 This is nice, but there's something fundamental that's missing.
 
 
-### Add a relationship between the Books and Authors entities.
+### 3. Add a relationship between the Books and Authors entities.
 
 The Books and Authors entities are standalone and currently are not related to each other. This is not ideal, so in this step you'll fix that by adding a relationship in the form of an [association](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9ead8e4701d04848a6fdc84356723a52.html).
 
@@ -101,7 +101,7 @@ Note that this is a 'to-many' relationship. Don't forget to save the file.
 ![navigation properties](navigation-properties.png)
 
 
-### Deploy the service to a persistence layer
+### 4. Deploy the service to a persistence layer
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now. Instead, we'll use a real database in the form of [https://sqlite.org](https://sqlite.org) and deploy the data model and service definition to it.
 
@@ -180,7 +180,7 @@ Note: If you're wondering what has been updated in `package.json`, have a look. 
 ```
 
 
-### Explore the new database
+### 5. Explore the new database
 
 At this point you should have a new file `bookshop.db` in the project folder.
 
@@ -201,7 +201,7 @@ user@host:~/bookshop
 Note: The `sqlite3` commandline utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../prerequisites.md).
 
 
-### Dig into the link between the CDS definitions and the artefacts in the database
+### 6. Dig into the link between the CDS definitions and the artefacts in the database
 
 Looking at the tables in the `bookshop.db` database we see that there are two pairs of names; one prefixed with `CatalogService` and one prefixed with `my_bookshop`. If you guessed that the `CatalogService`-prefixed artefacts relate to the service definition and the `my_bookshop`-prefixed artefacts relate to the data model, you are correct.
 
