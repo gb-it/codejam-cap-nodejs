@@ -177,6 +177,8 @@ The [catalog](http://localhost:4004/catalog) link will take you to the service d
 
 :point_right: Explore the metadata document and familiarize yourself with the content. Note the entityset definition and the entity type describing the `Books` entity. Note also the annotations describing particular service capabilities.
 
+:point_right: There is also a link to the [Books](http://localhost:4004/catalog/Books) entityset. Follow this link to see what the service returns.
+
 ## Summary
 
 With a single command, you've initialized a basic OData service project and with another command you've started it up and explored the metadata.
