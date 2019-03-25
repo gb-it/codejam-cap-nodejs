@@ -8,7 +8,6 @@ With Core Data & Services (CDS) as the definition language and CAP as the framew
 
 ## Covering (partially from [notes](../orgdocs/notes.md))
 
-- Looking at different options of `cds init`
 - Difference between db and srv (data model and service)
 - Getting a basic OData service (at least the metadata) up quickly, without even any persistence layer (`cds run`) (basic = a single entity, no relationships or anything, probably based on the sample Books from `cds init`)
 - Small excursion into OData, showing service document, metadata document, and data resources
@@ -27,7 +26,8 @@ The `cap` tool should be available in your executable path, having been installe
 :point_right: First, explore the `cap` commandline tool by executing it with no parameters; you will see what options are available:
 
 ```sh
-user@33608459f6e1:~# cds
+user@host:~
+=> cds
 
 USAGE
 
@@ -63,11 +63,56 @@ EXAMPLES
 
 Note that with `cds init` a new project can be quickly initialized.
 
-
-Now, move to a directory where you would like to create your first CAP based project, and invoke `cds init` with parameters like this:
+:point_right: Explore what options are available with `cds init` with the `--help` option:
 
 ```sh
-cds ini`kk
+user@host:~
+=> cds init --help
+```
+
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option.
+
+:point_right: Use both of these options to initialize a new project directory thus:
+
+```sh
+user@host:~
+=> cds init --modules db, srv --verbose bookshop
+
+You should see output that looks similar to this:
+
+```sh
+user@host:~
+=> cds init --modules db,srv --verbose bookshop
+
+Creating new project in directory bookshop.
+
+Copying templates for type db to bookshop/db ...
+Copying templates for type srv to bookshop/srv ...
+Updating npm dependencies in bookshop/package.json ...
+Running npm install...
+npm WARN bookshop@1.0.0 license should be a valid SPDX license expression
+
+added 76 packages from 109 contributors and audited 166 packages in 3.261s
+found 0 vulnerabilities
+
+
+Project creation was successful.
+```
+
+### Open the project in VS Code
+
+Now that the project has been initialized, it's time to explore it. The VS Code IDE is a comfortable environment in which to do so, so at this point you will open up the newly created `bookshop` directory in it.
+
+:point_right: Open up the new `bookshop` directory in VS Code. One way to do this (if the installation of VS Code on your operating system put the binary in your executable path) is simply by invoking `code` on the command line, and specifying the directory to open:
+
+```sh
+user@host:~
+=> code bookshop
+```
+
+If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually.
+
+
 
 ## Summary
 

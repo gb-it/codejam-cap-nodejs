@@ -12,16 +12,18 @@ After completing these steps you'll have a working local environment for develop
 
 The CDS commandline tool is the heart of everything you do when developing CAP services locally. It is Node.js based and comes in the form of an NPM package (which further depends on other packages). The package and its dependencies are in the `@sap` namespace and are available from the [SAP NPM registry](https://blogs.sap.com/2017/05/16/sap-npm-registry-launched-making-the-lives-of-node.js-developers-easier/).
 
-First, relate the `@sap` namespace to the SAP NPM registry:
+:point_right: First, relate the `@sap` namespace to the SAP NPM registry:
 
 ```shell
-npm set @sap:registry=https://npm.sap.com
+user@host:~
+=> npm set @sap:registry=https://npm.sap.com
 ```
 
-Check that this setting is now saved in your configuration, with:
+:point_right: Check that this setting is now saved in your configuration, with:
 
 ```sh
-npm config ls
+user@host:~
+=> npm config ls
 ```
 
 You should see output similar to this:
@@ -41,18 +43,20 @@ user-agent = "npm/6.4.1 node/v10.15.3 linux x64"
 ; "npm config ls -l" to show all defaults.
 ```
 
-Next, explore the information about the `@sap/cds` package, including its dependencies, with:
+:point_right: Next, explore the information about the `@sap/cds` package, including its dependencies, with:
 
 ```sh
-npm info @sap/cds
+user@host:~
+=> npm info @sap/cds
 ```
 
 This will show you that it has dependencies on other `@sap` namespaced packages, and also that there is a 'binary' (in other words an executable) called `cds` that's delivered as part of the package.
 
-Now, install the `@sap/cds` package globally:
+:point_right: Now, install the `@sap/cds` package globally:
 
 ```sh
-npm install --global @sap/cds
+user@host:~
+=> npm install --global @sap/cds
 ```
 
 This should eventually produce output similar to this:
@@ -71,7 +75,7 @@ To efficiently and comfortably develop CAP based services with CDS, there is an 
 
 Extensions can be installed directly in VS Code from the extension marketplace, or manually from a file. In this case the extension for CDS language support is available in the form of a file.
 
-Go to the [Cloud section of the SAP Development Tools website](https://tools.hana.ondemand.com/#cloud) and find the "CDS Language Support for Visual Studio Code" section. Follow the instructions there to download and subsequently install the extension.
+:point_right: Go to the [Cloud section of the SAP Development Tools website](https://tools.hana.ondemand.com/#cloud) and find the "CDS Language Support for Visual Studio Code" section. Follow the instructions there to download and subsequently install the extension.
 
 When successfully installed, you should see the extension thus:
 
