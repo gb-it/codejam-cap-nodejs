@@ -59,6 +59,95 @@ user@host:~/bookshop
 Is this just a recommendation that can be overridden? Let's find out.
 
 
+### 4. Attempt to modify the Books and Authors entitysets
+
+We can think of the annotations that we saw in the metadata document as guidelines for a UI, but we want to ensure that the restrictions are really in effect in the service itself. Let's try to create another entry in the `Books` entityset.
+
+:point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
+
+The request is an OData Create request for a new book. You should see that this request is rejected with HTTP status code 405 "Method Not Allowed", with an error like this supplied in the response body:
+
+```json
+{
+    "error": {
+        "code": "405",
+        "message": "Method Not Allowed"
+    }
+}
+```
+
+You should also see a line in the terminal (where you invoked `cds serve all`) like this:
+
+```
+[2019-03-26T06:39:23.025Z | WARNING | 1369756]: An error occurred: Method Not Allowed
+```
+
+:point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.
+
+It should also fail in a similar way.
+
+_TIP: If you end up destroying your test data, you can easily restore it by re-deploying (`cds deploy`), as the test data will be re-seeded from the CSV files._
+
+
+### Restrict access to the Orders entityset
+
+In a similar way to how we restricted access to the `Books` and `Authors` entitysets to read-only operations, we will now restrict access to the `Orders` entityset so that orders can only be created, not viewed, amended or removed.
+
+As you might have guessed, this is achieved via the `@insertonly` annotation shortcut.
+
+:point_right: In the `CatalogService` service definition in `srv/cat-service.cds`, annotate the `Orders` entity with `@readonly` so it looks like this:
+
+```cds
+service CatalogService {
+    @readonly entity Books as projection on my.Books;
+    @readonly entity Authors as projection on my.Authors;
+    @insertonly entity Orders as projection on my.Orders;
+}
+```
+
+:point_right: Re-deploy and restart the service (run `cds deploy && cds serve all` in the terminal).
+
+:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset.
+
+Note at this point that the requests are successful: HTTP status code 201 is returned for each request, along with the newly created entity in the response payload, like this example:
+
+```json
+{
+    "@odata.context": "$metadata#Orders/$entity",
+    "@odata.metadataEtag": "W/\"qItYMyHC4RMSWG6mehaOHDxo+o/HzUCPMchqSx7hd1k=\"",
+    "ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14",
+    "modifiedAt": null,
+    "createdAt": "2019-03-26T06:51:52Z",
+    "createdBy": "anonymous",
+    "modifiedBy": null,
+    "quantity": 9,
+    "book_ID": 427,
+    "country_code": null
+}
+```
+
+Further, you can see the request logged in the terminal, with no sign of any errors:
+
+```
+POST /catalog/Orders
+```
+
+This confirms we can insert new orders. But can we see what they are?
+
+:point_right: Try to perform an OData Query operation on the `Orders` entityset, simply by requesting this URL: [http://localhost:4004/catalog/Orders](http://localhost:4004/catalog/Orders).
+
+The operation should be denied, and you'll receive something like this in the body of the response in your browser:
+
+```xml
+<error xmlns="http://docs.oasis-open.org/odata/ns/metadata">
+<code>405</code>
+<message>Method Not Allowed</message>
+</error>
+```
+
+
+
+
 
 
 
@@ -78,5 +167,8 @@ Is this just a recommendation that can be overridden? Let's find out.
 
 ## Questions
 
-What are the advantages to separating the data model and service layers? Are there any disadvantages?
+1. What are the advantages to separating the data model and service layers? Are there any disadvantages?
 
+1. How might the annotations relating to the read-only restrictions be useful in a UI context?
+
+1. What was the format of the OData Delete operation - did we need to supply a payload?
