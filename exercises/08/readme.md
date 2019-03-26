@@ -95,6 +95,56 @@ Reloading the index page in the browser should show this:
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
 
+### 4. Bring in the main part of the app
+
+As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/browse/webapp`. Let's flesh that out in terms of directories and files now.
+
+First though let's look at a key artefact that will help us join together in our minds the two complementary worlds of CAP and Fiori. This artifact is a CDS file `index.cds` that we'll place at the same level as the `index.html` file, and it controls what gets served to Fiori frontends:
+
+- the app-specific annotated service
+- the annotations common to all apps
+
+:point_right: Create a file `index.cds` in the `app/` directory, and add the following content:
+
+```cds
+using from './browse/fiori-service';
+using my.bookshop as my from '../db/data-model';
+
+annotate my.Books with @(
+	UI: {
+		Identification: [ {Value:title} ],
+		SelectionFields: [ ID, author.name, stock ],
+		LineItem: [
+			{Value: ID},
+			{Value: title},
+			{Value: author.name},
+			{Value: author_ID, Label:'{i18n>AuthorID}'},
+			{Value: stock}
+		],
+		HeaderInfo: {
+			TypeName: '{i18n>Book}',
+			TypeNamePlural: '{i18n>Books}',
+			Title: {Value: title},
+			Description: {Value: author.name}
+		}
+	},
+);
+
+// Books Elements
+annotate my.Books with {
+	ID @title:'{i18n>ID}' @UI.HiddenFilter;
+	title @title:'{i18n>Title}';
+	author @title:'{i18n>AuthorID}';
+	stock @title:'{i18n>Stock}';
+}
+
+// Authors Elements
+annotate my.Authors with {
+	ID @title:'{i18n>ID}' @UI.HiddenFilter;
+	name @title:'{i18n>AuthorName}';
+}
+```
+
 ## Summary
 
 ...
