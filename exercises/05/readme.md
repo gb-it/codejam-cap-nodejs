@@ -198,7 +198,7 @@ There are some OData Create operations for this Orders entity prepared for you i
 
 ![importing a collection into Postman](import-collection.png)
 
-For the URL, use the link to this [postman-05.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/05/postman-05.json?token=AAEdbDygPoVAf9MBT7fN8XATyey_EmROks5cmOOjwA%3D%3D) resource.
+For the URL, use the link to this [postman-05.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/05/postman-05.json) resource.
 
 :point_right: Use the two requests in the 'exercise 05' folder in this imported collection to order books, noting how one request specifies an order ID and the other does not.
 

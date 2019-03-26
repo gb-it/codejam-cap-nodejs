@@ -1,21 +1,24 @@
 # Exercise 06
 
-In this exercise you'll enhance the service definition with annotations that restrict the OData operations that are allowed.
+In this exercise you'll enhance the service definition with annotations, and introduce a second service that sits on top of the same underlying data model.
+
+
+- Basic annotations (@readonly, @insertonly) in the service
+- Introducing a second service on the same data model (admin related)
 
 
 ## Steps
 
-At the end of these steps, your OData service will have different levels of access for each of the entities.
+At the end of these steps, you'll have two OData services both exposing different views on the same underlying data model.
 
 
 ### 1. Import a collection of HTTP requests into Postman
 
-:point_right: In the same way that you did in [exercise 05](../05/), import a collection of HTTP requests into your Postman client via the URL to [postman-06.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/06/postman-06.json) resource.
+:point_right: In the same way that you did in [exercise 05](../05/), import a collection of HTTP requests into your Postman client via the URL to [postman-06.json](TODO.json).
 
 This contains a number of different requests ready for you to try.
 
-![Postman collection](postman-collection-06.png)
-
+TODO - screenshot of entire collection
 
 ### 2. Test the existing write access to Books and Authors
 
@@ -145,9 +148,23 @@ The operation should be denied, and you'll receive something like this in the bo
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Summary
 
-In this exercise you used shortcut annotations to restrict access to the entities expose in the service definition.
 
 
 ## Questions
