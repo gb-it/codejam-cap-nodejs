@@ -159,7 +159,7 @@ using CatalogService from '../../srv/cat-service';
 
 At this stage your `app/` directory structure should look like this:
 
-[app directory structure](app-directory.png)
+![app directory structure](app-directory.png)
 
 
 ## Summary
