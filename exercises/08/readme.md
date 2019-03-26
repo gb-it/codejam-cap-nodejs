@@ -23,9 +23,9 @@ If there is an `app/` directory with content, it will serve that instead.
 <html>
 <head>
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-	<title>Bookshop</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Bookshop</title>
 
 
 </head>
@@ -85,18 +85,18 @@ Now we have the launchpad as a container for our app, let's introduce it gradual
 
 ```javascript
 <script>
-	window["sap-ushell-config"] = {
-		defaultRenderer: "fiori2",
-		applications: {
-			"browse-books": {
-				title: "Browse Books",
-				description: "Bookshop",
-				additionalInformation: "SAPUI5.Component=bookshop",
-				applicationType : "URL",
-				url: "/browse/webapp"
-			}
-		}
-	};
+    window["sap-ushell-config"] = {
+        defaultRenderer: "fiori2",
+        applications: {
+            "browse-books": {
+                title: "Browse Books",
+                description: "Bookshop",
+                additionalInformation: "SAPUI5.Component=bookshop",
+                applicationType : "URL",
+                url: "/browse/webapp"
+            }
+        }
+    };
 </script>
 ```
 
@@ -122,37 +122,37 @@ using from './browse/fiori-service';
 using my.bookshop as my from '../db/data-model';
 
 annotate my.Books with @(
-	UI: {
-		Identification: [ {Value:title} ],
-		SelectionFields: [ ID, author.name, stock ],
-		LineItem: [
-			{Value: ID},
-			{Value: title},
-			{Value: author.name},
-			{Value: author_ID, Label:'{i18n>AuthorID}'},
-			{Value: stock}
-		],
-		HeaderInfo: {
-			TypeName: '{i18n>Book}',
-			TypeNamePlural: '{i18n>Books}',
-			Title: {Value: title},
-			Description: {Value: author.name}
-		}
-	},
+    UI: {
+        Identification: [ {Value:title} ],
+        SelectionFields: [ ID, author.name, stock ],
+        LineItem: [
+            {Value: ID},
+            {Value: title},
+            {Value: author.name},
+            {Value: author_ID, Label:'{i18n>AuthorID}'},
+            {Value: stock}
+        ],
+        HeaderInfo: {
+            TypeName: '{i18n>Book}',
+            TypeNamePlural: '{i18n>Books}',
+            Title: {Value: title},
+            Description: {Value: author.name}
+        }
+    },
 );
 
 // Books Elements
 annotate my.Books with {
-	ID @title:'{i18n>ID}' @UI.HiddenFilter;
-	title @title:'{i18n>Title}';
-	author @title:'{i18n>AuthorID}';
-	stock @title:'{i18n>Stock}';
+    ID @title:'{i18n>ID}' @UI.HiddenFilter;
+    title @title:'{i18n>Title}';
+    author @title:'{i18n>AuthorID}';
+    stock @title:'{i18n>Stock}';
 }
 
 // Authors Elements
 annotate my.Authors with {
-	ID @title:'{i18n>ID}' @UI.HiddenFilter;
-	name @title:'{i18n>AuthorName}';
+    ID @title:'{i18n>ID}' @UI.HiddenFilter;
+    name @title:'{i18n>AuthorName}';
 }
 ```
 
@@ -200,37 +200,37 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ```json
 {
-	"_version": "1.8.0",
-	"sap.app": {
-		"id": "bookshop",
-		"type": "application",
-		"title": "Browse Books",
-		"description": "Sample Application",
-		"i18n": "i18n/i18n.properties",
-		"dataSources": {
-			"CatalogService": {
-				"uri": "/catalog/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "4.0"
-				}
-			}
-		}
-	},
-	"sap.ui5": {
+    "_version": "1.8.0",
+    "sap.app": {
+        "id": "bookshop",
+        "type": "application",
+        "title": "Browse Books",
+        "description": "Sample Application",
+        "i18n": "i18n/i18n.properties",
+        "dataSources": {
+            "CatalogService": {
+                "uri": "/catalog/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": {
         "dependencies": {
             "libs": {
                 "sap.fe": {}
             }
         },
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"uri": "i18n/i18n.properties"
-			},
-			"": {
-				"dataSource": "CatalogService",
-				"settings": {
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "": {
+                "dataSource": "CatalogService",
+                "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
                     "autoExpandSelect" : true,
@@ -240,9 +240,9 @@ This is a modern UI5 component definition that points to a JSON configuration fi
                             "submit": "Auto"
                         }
                     }
-				}
-			}
-		},
+                }
+            }
+        },
         "routing": {
             "routes": [
                 {
@@ -277,8 +277,8 @@ This is a modern UI5 component definition that points to a JSON configuration fi
                     "viewName": "sap.fe.templates.ObjectPage"
                 }
             }
-		}
-	}
+        }
+    }
 }
 ```
 
