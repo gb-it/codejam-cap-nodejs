@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "A) Before @readonly annotations",
+			"name": "(A) Before @readonly annotations",
 			"item": [
 				{
 					"name": "1) Add author \"Iain M Banks\"",
@@ -69,10 +69,10 @@
 			]
 		},
 		{
-			"name": "B) After @readonly annotations",
+			"name": "(B) After @readonly annotations",
 			"item": [
 				{
-					"name": "1) Add book \"The Player of Games\" Copy",
+					"name": "1) Add book \"The Player of Games\"",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -95,6 +95,30 @@
 							"path": [
 								"catalog",
 								"Books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2) Remove book \"The Raven\"",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4004/catalog/Books(251)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"catalog",
+								"Books(251)"
 							]
 						}
 					},
