@@ -173,6 +173,117 @@ At this stage your `app/` directory structure should look like this:
 ![app directory structure](app-directory.png)
 
 
+### 6. Create the app artefacts
+
+We've done all the hard work now, all that remains is to create just two files that will represent the app. This is because we are using Fiori Elements and driving the UI via annotations on the service.
+
+:point_right: In the `browse/` directory, alongside the `fiori-services.cds` file you created already, add a new directory `webapp/` that will contain the two app files.
+
+![webapp directory](webapp-dir.png)
+
+:point_right: In this new `webapp/` directory, create a simple `Component.js` file with the following content:
+
+```js
+sap.ui.define(
+    ["sap/fe/AppComponent"],
+    ac => ac.extend("bookshop.Component", {
+        metadata: {
+            manifest: "json"
+        }
+    })
+)
+```
+
+This is a modern UI5 component definition that points to a JSON configuration file (a manifest).
+
+:point_right: Create the manifest file `manifest.json` in the same directory, with the following contents:
+
+```json
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "bookshop",
+		"type": "application",
+		"title": "Browse Books",
+		"description": "Sample Application",
+		"i18n": "i18n/i18n.properties",
+		"dataSources": {
+			"CatalogService": {
+				"uri": "/catalog/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+	"sap.ui5": {
+        "dependencies": {
+            "libs": {
+                "sap.fe": {}
+            }
+        },
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"": {
+				"dataSource": "CatalogService",
+				"settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect" : true,
+                    "earlyRequests": true,
+                    "groupProperties": {
+                        "default": {
+                            "submit": "Auto"
+                        }
+                    }
+				}
+			}
+		},
+        "routing": {
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "BooksList",
+                    "target": "BooksList"
+                },
+                {
+                    "pattern": "Books({key})",
+                    "name": "BooksDetails",
+                    "target": "BooksDetails"
+                }
+            ],
+            "targets": {
+                "BooksList": {
+                    "entitySet": "Books",
+                    "viewId": "bookshop::ListReport::Books",
+                    "viewName": "sap.fe.templates.ListReport",
+                    "viewData": {
+                        "navigation": {
+                            "Books": {
+                                "detail": {
+                                    "route": "BooksDetails"
+                                }
+                            }
+                        }
+                    }
+                },
+                "BooksDetails": {
+                    "entitySet": "Books",
+                    "viewId": "bookshop::ObjectPage::Books",
+                    "viewName": "sap.fe.templates.ObjectPage"
+                }
+            }
+		}
+	}
+}
+```
+
+
+
 ## Summary
 
 ...
