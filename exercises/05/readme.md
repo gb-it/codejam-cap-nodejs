@@ -19,6 +19,7 @@ entity Orders {
   key ID   : UUID;
   book     : Association to Books;
   quantity : Integer;
+}
 ```
 
 We're not quite done with this entity, but for now, have a look at the fruits of your labor by adding a new entry to the service definition for this entity, redeploying and restarting the service.
@@ -98,6 +99,7 @@ These features are now available to use in our entity definitions.
 entity Orders : cuid {
   book     : Association to Books;
   quantity : Integer;
+}
 ```
 
 The use of `cuid` in this position will cause a key property of type `UUID` to be added implicitly to this entity definition.
@@ -108,6 +110,7 @@ The use of `cuid` in this position will cause a key property of type `UUID` to b
 entity Orders : cuid, managed {
   book     : Association to Books;
   quantity : Integer;
+}
 ```
 
 This will cause the implicit inclusion of four properties in this entity (these are the `createdAt`, `createdBy`, `modifiedAt` and `modifiedBy` properties from the `managed` type definition in `@sap/cds/common.cds` we examined earlier in this exercise).
@@ -119,6 +122,7 @@ entity Orders : cuid, managed {
   book     : Association to Books;
   quantity : Integer;
   country  : Country;
+}
 ```
 
 Note the difference in capitalization here. The property name is `country` which is described by the type `Country`.
@@ -194,7 +198,7 @@ There are some OData Create operations for this Orders entity prepared for you i
 
 ![importing a collection into Postman](import-collection.png)
 
-For the URL, use the link to this [postman.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/05/postman.json?token=AAEdbDygPoVAf9MBT7fN8XATyey_EmROks5cmOOjwA%3D%3D) resource.
+For the URL, use the link to this [postman-05.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/05/postman-05.json?token=AAEdbDygPoVAf9MBT7fN8XATyey_EmROks5cmOOjwA%3D%3D) resource.
 
 :point_right: Use the two requests in the 'exercise 05' folder in this imported collection to order books, noting how one request specifies an order ID and the other does not.
 
