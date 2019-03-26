@@ -18,27 +18,12 @@ Test
 ### Introduce a basic UI app to the Fiori launchpad
 
 
-Reloading the index page in the browser should show this:
+Reloading the index page in the browser should show this
 
 test 123
 
 
-
-
 ### Bring in the main part of the app
-
-:point_right: Create a file `index.cds` in the `app/` directory, and add the following content:
-
-```cds
-using from './browse/fiori-service';
-using my.bookshop as my from '../db/data-model';
-
-// Authors Elements
-annotate my.Authors with {
-    ID @title:'{i18n>ID}' @UI.HiddenFilter;
-    name @title:'{i18n>AuthorName}';
-}
-```
 
 
 ### Create the app directory and the app-specific CDS file
