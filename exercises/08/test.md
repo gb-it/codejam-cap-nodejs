@@ -18,9 +18,6 @@ Test
 ### Introduce a basic UI app to the Fiori launchpad
 
 
-Reloading the index page in the browser should show this
-
-test 123
 
 
 ### Bring in the main part of the app
