@@ -1,6 +1,6 @@
 # Exercise 08 - Introducing an app at the UI layer
 
-Test
+Test 2
 
 
 ## Steps
@@ -20,7 +20,8 @@ Test
 
 Reloading the index page in the browser should show this:
 
-![Fiori launchpad with tile](launchpad-with-tile.png)
+test 123
+
 
 
 
