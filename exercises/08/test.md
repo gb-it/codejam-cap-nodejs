@@ -23,6 +23,7 @@ Reloading the index page in the browser should show this:
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
 
+
 ### Bring in the main part of the app
 
 :point_right: Create a file `index.cds` in the `app/` directory, and add the following content:
@@ -37,6 +38,7 @@ annotate my.Authors with {
     name @title:'{i18n>AuthorName}';
 }
 ```
+
 
 ### Create the app directory and the app-specific CDS file
 
