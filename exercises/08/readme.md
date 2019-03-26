@@ -45,8 +45,8 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
 :point_right: Add these three `script` tags between the `title` element and the end of the `head` element:
 
 ```html
-	<script
-    	src="https://sapui5.hana.ondemand.com/1.63.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+    <script
+        src="https://sapui5.hana.ondemand.com/1.63.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
     <script id="sap-ui-bootstrap"
         src="https://sapui5.hana.ondemand.com/1.63.1/resources/sap-ui-core.js"
@@ -69,11 +69,40 @@ Reloading the browser tab should now show the beginnings of something recognizab
 Great!
 
 
+### 3. Introduce a basic UI app to the Fiori launchpad
 
-## Summary
+Now we have the launchpad as a container for our app, let's introduce it gradually.
+
+:point_right: First, add an entry to the sandbox launchpad configuration to define a tile and the app to which it should be connected, by adding this `applications` property (for a "Browse Books" app) to the "sap-ushell-config" in the `index.html` file (the surrounding context is shown for clarity):
+
+```javascript
+window["sap-ushell-config"] = {
+	defaultRenderer: "fiori2",
+	applications: {
+		"browse-books": {
+			title: "Browse Books",
+			description: "Bookshop",
+			additionalInformation: "SAPUI5.Component=bookshop",
+			applicationType : "URL",
+			url: "/browse/webapp"
+		}
+	}
+};
+```
+
+Reloading the index page in the browser should show this:
+
+![Fiori launchpad with tile](launchpad-with-tile.png)
+
+
+## Summary
+
+...
 
 
 ## Questions
+
+...
 
 
 
