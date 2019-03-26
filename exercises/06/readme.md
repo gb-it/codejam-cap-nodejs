@@ -106,7 +106,7 @@ service CatalogService {
 
 :point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset.
 
-![Postman request collection](postman-collection.png)
+![Postman request collection](postman-collection-06.png)
 
 Note at this point that the requests are successful: HTTP status code 201 is returned for each request, along with the newly created entity in the response payload, like this example:
 
