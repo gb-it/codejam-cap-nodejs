@@ -53,7 +53,6 @@ user@host:~/bookshop
 => cds serve all
 
 [cds] - server listens at http://localhost:4004
-[cds] - serving static resources from ./app
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
@@ -140,7 +139,6 @@ user@host:~/bookshop
 > initializing from csv files at ./db/csv...
 
 [cds] - server listens at http://localhost:4004
-[cds] - serving static resources from ./app
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 

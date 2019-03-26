@@ -159,7 +159,6 @@ You should see output similar to this:
 
 ```
 [cds] - server listens at http://localhost:4004
-[cds] - serving static resources from ./app
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
