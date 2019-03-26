@@ -42,9 +42,17 @@ If there is an `app/` directory with content, it will serve that instead.
 
 To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
-:point_right: Add these three `script` tags between the `title` element and the end of the `head` element:
+:point_right: Add these `script` elements between the `title` element and the end of the `head` element:
 
 ```html
+    <script>
+        window["sap-ushell-config"] = {
+            defaultRenderer: "fiori2",
+            applications: {
+            }
+        };
+    </script>
+
     <script
         src="https://sapui5.hana.ondemand.com/1.63.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
@@ -66,28 +74,30 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
 
-Great!
+Note: You may see the three dots signifying a wait state - you can ignore this.
 
 
 ### 3. Introduce a basic UI app to the Fiori launchpad
 
 Now we have the launchpad as a container for our app, let's introduce it gradually.
 
-:point_right: First, add an entry to the sandbox launchpad configuration to define a tile and the app to which it should be connected, by adding this `applications` property (for a "Browse Books" app) to the "sap-ushell-config" in the `index.html` file (the surrounding context is shown for clarity):
+:point_right: First, add an entry to the sandbox launchpad configuration to define a tile and the app to which it should be connected, by adding this section to the `applications` property (for a "Browse Books" app) in the "sap-ushell-config" (it's in the first `script` element, the surrounding context is shown):
 
 ```javascript
-window["sap-ushell-config"] = {
-	defaultRenderer: "fiori2",
-	applications: {
-		"browse-books": {
-			title: "Browse Books",
-			description: "Bookshop",
-			additionalInformation: "SAPUI5.Component=bookshop",
-			applicationType : "URL",
-			url: "/browse/webapp"
+<script>
+	window["sap-ushell-config"] = {
+		defaultRenderer: "fiori2",
+		applications: {
+			"browse-books": {
+				title: "Browse Books",
+				description: "Bookshop",
+				additionalInformation: "SAPUI5.Component=bookshop",
+				applicationType : "URL",
+				url: "/browse/webapp"
+			}
 		}
-	}
-};
+	};
+</script>
 ```
 
 Reloading the index page in the browser should show this:
