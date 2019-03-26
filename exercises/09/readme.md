@@ -1,4 +1,4 @@
-# Exercise 07
+# Exercise 09 - Adding a second app
 
 In this exercise you'll add to the UI by creating an app that can be used to place orders, resulting in new Order entities being written to the persistence layer.
 

@@ -1,12 +1,8 @@
-# Exercise 04
+# Exercise 04 - Adding data and testing OData operations
 
 In [exercise 03](../03/) you deployed the service definition (including the referenced data model) to a SQLite-powered persistence layer. While at this stage the OData service is working nicely, we don't yet have data to explore with.
 
 In this exercise you'll seed the persistence layer with data from CSV files, which is often a great way to kick start exploration, development and testing in the early stages of a project.
-
-- Seeding the persistence layer and service with data via CSV
-- Introducing more entities and building relationships between them (Associations / Compositions)
-- Trying out OData operations (CRUD+Q) on the basic service
 
 
 ## Steps

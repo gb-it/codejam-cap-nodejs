@@ -1,4 +1,4 @@
-# Exercise 06
+# Exercise 06 - Enhancing the service with annotations
 
 In this exercise you'll enhance the service definition with annotations that restrict the OData operations that are allowed.
 

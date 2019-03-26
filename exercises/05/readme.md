@@ -1,4 +1,4 @@
-# Exercise 05
+# Exercise 05 - Adding a second entity, using common definition features
 
 In this exercise you'll add a further entity to the data model and expose it through the service. In defining this entity you'll make use of some common definition features available to all CAP projects.
 

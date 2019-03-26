@@ -1,10 +1,6 @@
-# Exercise 03
+# Exercise 03 - Enhancing the project & adding persistence
 
 In this exercise you'll enhance your basic bookshop project by adding to the data model and service definition, and creating a persistence layer.
-
-- Seeding the persistence layer and service with data via CSV
-- Introducing more entities and building relationships between them (Associations / Compositions)
-- Trying out OData operations (CRUD+Q) on the basic service
 
 
 ## Steps

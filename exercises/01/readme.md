@@ -1,4 +1,4 @@
-# Exercise 01
+# Exercise 01 - Installing the CAP related tools
 
 In this exercise you'll install all the tools required to work comfortably with the Node.js flavor of CAP in a local environment.
 

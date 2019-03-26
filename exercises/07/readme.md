@@ -1,4 +1,4 @@
-# Exercise 07
+# Exercise 07 - Defining a second service
 
 In this exercise you'll enhance the service definition by introducing a second service that sits on top of the same underlying data model. You'll see that you can define as many services on the same data model as you need, either in the same service definition file, or in separate files. In this exercise you'll define the second service in the same file.
 

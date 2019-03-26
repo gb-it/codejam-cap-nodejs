@@ -1,4 +1,4 @@
-# Exercise 02
+# Exercise 02 - Creating a new CAP project
 
 In this exercise you'll become familiar with the workflow of creating a new CAP project from the command line, and discover how quickly you can get to a basic OData service serving a simple metadata document.
 

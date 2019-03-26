@@ -1,4 +1,4 @@
-# Exercise 06
+# Exercise 08 - Introducing an app at the UI layer
 
 In this exercise you'll add a UI layer, by adding annotations that can drive aspects of a user interface, and introducing a Fiori Elements based app.
 
