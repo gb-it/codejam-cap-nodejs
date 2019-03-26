@@ -172,6 +172,10 @@ At this stage your `app/` directory structure should look like this:
 
 ![app directory structure](app-directory.png)
 
+The final thing to do in this step is to redeploy because we have added CDS artefacts.
+
+:point_right: Do this now, with `cds deploy`, before restarting the service.
+
 
 ### 6. Create the app artefacts
 
@@ -282,16 +286,44 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 }
 ```
 
+### 7. Test the app
+
+The app should be ready to invoke. Reload the Fiori launchpad and select the tile. It should open up into a nice List Report style Fiori Elements app - all driven from the service's annotations:
+
+![the Browse Books app](browse-books-app.png)
+
+Well done!
+
+
+### 8. Add base internationalization texts
+
+Just to round things off, add some internationalization (i18n) texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
+
+:point_right: Create a directory called `i18n/` as a direct child of the `app/` directory, and create a file `i18n.properties` inside it, with the following content:
+
+```
+ID=ID
+Title=Title
+Stock=Stock Available
+AuthorID=Author ID
+AuthorName=Author Name
+Book=Book
+Books=Books
+```
+
+:point_right: Redeploy and restart the service (`cds deploy && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
 
 
 ## Summary
 
-...
+While this was a little intense as far as creation of artefacts was concerned, we hope you agree that for little effort, and based on a great foundation, a lot of power can be wielded!
 
 
 ## Questions
 
-...
+1. Where would further apps logically live in this logical structure?
+
+1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
 
 
 
