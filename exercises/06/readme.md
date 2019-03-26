@@ -83,7 +83,7 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 
 It should also fail in a similar way.
 
-_TIP: If you end up destroying your test data, you can easily restore it by re-deploying (`cds deploy`), as the test data will be re-seeded from the CSV files._
+_TIP: If you end up destroying your test data, you can easily restore it by redeploying (`cds deploy`), as the test data will be re-seeded from the CSV files._
 
 
 ### Restrict access to the Orders entityset
@@ -102,7 +102,7 @@ service CatalogService {
 }
 ```
 
-:point_right: Re-deploy and restart the service (run `cds deploy && cds serve all` in the terminal).
+:point_right: Redeploy and restart the service (run `cds deploy && cds serve all` in the terminal).
 
 :point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset.
 

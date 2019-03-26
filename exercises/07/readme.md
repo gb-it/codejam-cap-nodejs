@@ -1,10 +1,8 @@
-# Exercise 06
+# Exercise 07
 
-In this exercise you'll enhance the service definition with annotations, and introduce a second service that sits on top of the same underlying data model.
+In this exercise you'll enhance the service definition by introducing a second service that sits on top of the same underlying data model. You'll see that you can define as many services on the same data model as you need, either in the same service definition file, or in separate files. In this exercise you'll define the second service in the same file.
 
-
-- Basic annotations (@readonly, @insertonly) in the service
-- Introducing a second service on the same data model (admin related)
+The scenario is that a service is required to provide an analysis frontend with basic statistics on book orders, and nothing else - so there's no need (or desire) to expose the rest of the data model to this frontend.
 
 
 ## Steps
@@ -12,165 +10,93 @@ In this exercise you'll enhance the service definition with annotations, and int
 At the end of these steps, you'll have two OData services both exposing different views on the same underlying data model.
 
 
-### 1. Import a collection of HTTP requests into Postman
+### 1. Add a new service definition
 
-:point_right: In the same way that you did in [exercise 05](../05/), import a collection of HTTP requests into your Postman client via the URL to [postman-06.json](TODO.json).
+Service definitions can live alongside each other in the same CDS file.
 
-This contains a number of different requests ready for you to try.
-
-TODO - screenshot of entire collection
-
-### 2. Test the existing write access to Books and Authors
-
-Right now the `Books` and `Authors` entities are exposed in the `CatalogService` service. In the subsequent steps in this exercise we'll be tightening the restrictions down to read-only. Before we do, let's check to see that, at least currently, we have write access. We'll do that by making a couple of OData Create operations, one to create a new author, and the other to add a book by that author.
-
-:point_right: In the Postman collection you imported, try out the requests in the folder "**(A) Before @readonly annotations**", running them in the order they're presented (the creation of the new book is for the new author, which needs to exist first).
-
-Note that the creation requests are successful, and you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
-
-
-### 3. Restrict access to the Books and Authors entities
-
-Now, we want to only allow read-only operations on the master data. This can be achieved with OData annotations that are encapsulated into a convenient `@readonly` [shortcut](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/227cbf1a3ec24075a3aaaf6202f88be5.html).
-
-:point_right: Add this to each of the `Books` and `Authors` specifications in the `CatalogService` thus:
+:point_right: In `srv/cat-service.cds`, add a second service definition thus:
 
 ```cds
-service CatalogService {
-    @readonly entity Books as projection on my.Books;
-    @readonly entity Authors as projection on my.Authors;
-    entity Orders as projection on my.Orders;
-}
-```
-
-What does this do, precisely?
-
-:point_right: First save the file then redeploy & restart the service, like you did in [exercise 05](../05/):
-
-```sh
-user@host:~/bookshop
-=> cds deploy && cds serve all
-```
-
-:point_right: Now examine the OData service's [metadata](http://localhost:4004/catalog/$metadata), and you should find annotations that look like this:
-
-![readonly annotations](readonly-annotations.png)
-
-Is this just a recommendation that can be overridden? Let's find out.
-
-
-### 4. Attempt to modify the Books and Authors entitysets
-
-We can think of the annotations that we saw in the metadata document as guidelines for a UI, but we want to ensure that the restrictions are really in effect in the service itself. Let's try to create another entry in the `Books` entityset.
-
-:point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
-
-The request is an OData Create request for a new book. You should see that this request is rejected with HTTP status code 405 "Method Not Allowed", with an error like this supplied in the response body:
-
-```json
-{
-    "error": {
-        "code": "405",
-        "message": "Method Not Allowed"
+service Stats {
+    @readonly entity OrderInfo as projection on my.Orders excluding {
+        createdAt,
+        createdBy,
+        modifiedAt,
+        modifiedBy
     }
 }
 ```
 
-You should also see a line in the terminal (where you invoked `cds serve all`) like this:
+Here the `Stats` service exposes the Orders entity in a read-only fashion as in the `CatalogService`, but uses the `excluding` clause to omit specific properties. These properties are not of interest to the analysis UI so are explicitly left out. Note that it also exposes the information as an entity called `OrderInfo`.
+
+:point_right: Redeploy the service with `cds deploy` and note the message that is emitted, which looks something like this:
 
 ```
-[2019-03-26T06:39:23.025Z | WARNING | 1369756]: An error occurred: Method Not Allowed
+[ERROR] at srv/cat-service.cds:10:49-58: Association "Stats.OrderInfo.book" cannot be implicitly redirected: Target "my.bookshop.Books" is not exposed in service "Stats" by any projection
 ```
 
-:point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.
-
-It should also fail in a similar way.
-
-_TIP: If you end up destroying your test data, you can easily restore it by re-deploying (`cds deploy`), as the test data will be re-seeded from the CSV files._
-
-
-### Restrict access to the Orders entityset
-
-In a similar way to how we restricted access to the `Books` and `Authors` entitysets to read-only operations, we will now restrict access to the `Orders` entityset so that orders can only be created, not viewed, amended or removed.
-
-As you might have guessed, this is achieved via the `@insertonly` annotation shortcut.
-
-:point_right: In the `CatalogService` service definition in `srv/cat-service.cds`, annotate the `Orders` entity with `@readonly` so it looks like this:
+This is because the `Orders` entity has a relationship with the `Books` entity ...
 
 ```cds
-service CatalogService {
-    @readonly entity Books as projection on my.Books;
-    @readonly entity Authors as projection on my.Authors;
-    @insertonly entity Orders as projection on my.Orders;
+entity Orders : cuid, managed {
+  book     : Association to Books;
+  quantity : Integer;
+  country  : Country;
 }
 ```
 
-:point_right: Re-deploy and restart the service (run `cds deploy && cds serve all` in the terminal).
+... but we're not exposing the `Books` entity in this service. We're not actually interested in the details of the books that are ordered, so add the `book` property to the list of properties to exclude. While you're at it, also add the `country` property to this list:
 
-:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset.
-
-![Postman request collection](postman-collection.png)
-
-Note at this point that the requests are successful: HTTP status code 201 is returned for each request, along with the newly created entity in the response payload, like this example:
-
-```json
-{
-    "@odata.context": "$metadata#Orders/$entity",
-    "@odata.metadataEtag": "W/\"qItYMyHC4RMSWG6mehaOHDxo+o/HzUCPMchqSx7hd1k=\"",
-    "ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14",
-    "modifiedAt": null,
-    "createdAt": "2019-03-26T06:51:52Z",
-    "createdBy": "anonymous",
-    "modifiedBy": null,
-    "quantity": 9,
-    "book_ID": 427,
-    "country_code": null
+```cds
+service Stats {
+    @readonly entity OrderInfo as projection on my.Orders excluding {
+        createdAt,
+        createdBy,
+        modifiedAt,
+        modifiedBy,
+        book,         // <--
+        country       // <--
+    }
 }
 ```
 
-Further, you can see the request logged in the terminal, with no sign of any errors:
+:point_right: Now redeploy and start serving the services (`cds deploy && cds serve all`) and check the root document at [http://localhost:4004/](http://localhost:4004/). You should see something like this:
 
-```
-POST /catalog/Orders
-```
-
-This confirms we can insert new orders. But can we see what they are?
-
-:point_right: Try to perform an OData Query operation on the `Orders` entityset, simply by requesting this URL: [http://localhost:4004/catalog/Orders](http://localhost:4004/catalog/Orders).
-
-The operation should be denied, and you'll receive something like this in the body of the response in your browser:
-
-```xml
-<error xmlns="http://docs.oasis-open.org/odata/ns/metadata">
-<code>405</code>
-<message>Method Not Allowed</message>
-</error>
-```
+![two services](two-services.png)
 
 
+### 2. Create multiple orders
 
+Now let's create a number of orders, and see what the `OrderInfo` entityset shows us. We can do this quickly using another Postman collection, and using Postman's "Collection Runner" feature.
 
+:point_right: Import another collection into Postman from the URL to this resource: [postman-07.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/07/postman-07.json).
 
+This screenshot shows what the collection looks like (it contains multiple POST requests to create orders for various books) and also shows the extra options which allows all the requests in the collection to be executed in one go:
 
+![Postman collection](postman-collection-07.png)
 
+:point_right: After importing this collection, click the arrow to the right of the collection name to expand the options as shown, and select the "Run" button which will open up the "Collection Runner" window:
 
+![Collection Runner window](collection-runner.png)
 
+:point_right: Use the "Run ..." button to execute all the requests - a results window should appear.
 
+Now it's time to take a look at what the service will show us for these orders. We know we can't look at the `Orders` entityset as it has a `@insertonly` annotation shortcut based restriction, so we turn to our new service `Stats`.
 
+:point_right: Look at the [http://localhost:4004/stats/OrderInfo](OrderInfo) entityset in the `Stats` service. You should see something like this:
 
+![OrderInfo entityset](orderinfo-entityset.png)
 
-
-
+It shows us only the quantity statistics for the orders, just what we want for our simple analysis frontend.
 
 
 ## Summary
 
+It's easy to explore building different views on the same underlying data model, views that are focused and appropriate for different consumers, whether they are user interfaces or API clients.
 
 
 ## Questions
 
-1. What are the advantages to separating the data model and service layers? Are there any disadvantages?
+1. Why is it better to specify properties to _exclude_, rather than properties to _include_?
 
-1. How might the annotations relating to the read-only restrictions be useful in a UI context?
-
-1. What was the format of the OData Delete operation - did we need to supply a payload?
+1. What did the order creation HTTP requests look like - which service was used, and why?
