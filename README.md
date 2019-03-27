@@ -8,9 +8,22 @@ The material consists of a series of exercises that are to be done in order (eac
 
 ## Following the exercises
 
-We strongly recommend you avoid copy/pasting content - there isn't much to type in all, and learning works better when it starts with osmosis through the fingertips! Everything you need to enter will be described in each of the exercise 'readme' files.
+Except for some of the content in exercise 09, we strongly recommend you avoid copy/pasting content - there isn't much to type in all, and learning works better when it starts with osmosis through the fingertips! Everything you need to enter will be described in each of the exercise 'readme' files.
 
 At the end of each exercise there are questions; these are designed to help you think about the content just covered, and are to be discussed with the entire CodeJam class, at the end of each exercise. If you finish an exercise early, please resist the temptation to continue with the next exercise, Instead, explore what you've just done and see if you can find out more about the subject that was covered. That way we all stay on track together and can benefit from some reflection via the questions (and answers).
 
 :point_right: Where there's an action for you to perform, it will be prefixed with this pointing symbol, to help you focus on where you are in each exercise.
 
+## The exercises
+
+Here's an overview of the exercises in this CodeJam.
+
+- [01 - Installing the CAP related tools](exercises/01/)
+- [02 - Creating a new CAP project](exercise/02/)
+- [03 - Enhancing the project & adding persistence](excercise/03/)
+- [04 - Adding data & testing OData operations](exercise/04)
+- [05 - Adding a second entity, using common definition features](exercises/05)
+- [06 - Enhancing the service with annotations](exercise/06/)
+- [07 - Defining a second service](exercise/07/)
+- [08 - Adding custom service implementation logic](exercise/08/)
+- [09 - Introducing an app at the UI layer](exercise/09/)

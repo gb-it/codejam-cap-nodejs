@@ -1,4 +1,4 @@
-# Exercise 04 - Adding data and testing OData operations
+# Exercise 04 - Adding data & testing OData operations
 
 In [exercise 03](../03/) you deployed the service definition (including the referenced data model) to a SQLite-powered persistence layer. While at this stage the OData service is working nicely, we don't yet have data to explore with.
 
