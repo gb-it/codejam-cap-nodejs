@@ -31,7 +31,7 @@ In the new file `cat-service.js`, add the following code:
 const cds = require('@sap/cds')
 module.exports = srv => {
 
-  console.log(srv.name)
+  console.log('Service name:', srv.name)
 
 }
 ```
@@ -62,8 +62,6 @@ Service name: CatalogService                                       <--
 Service name: Stats                                                <--
 [cds] - service definitions loaded from:
 
-  app/index.cds
-  app/browse/fiori-service.cds
   db/data-model.cds
   srv/cat-service.cds
   node_modules/@sap/cds/common.cds
