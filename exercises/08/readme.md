@@ -68,11 +68,11 @@ Service name: Stats                                                <--
 [cds] - launched in: 720.034ms
 ```
 
-The first two ("serving <service> at <endpoint> ...") that we've seen before now have extra information showing that there's a JavaScript implementation that complements the service definition.
+The first two ("serving \<service\> at \<endpoint\> ...") that we've seen before now have extra information showing that there's a JavaScript implementation that complements the service definition.
 
 Note that as the relationship between the service definition and the handler is at file level, the new `cat-service.js` file is deemed a handler for both services (`CatalogService` and `Stats`) in that service definition file.
 
-In fact, we can see that in the two lines from the call to `console.log` confirm that - the function defined in the module is called twice - once for each service (the first time `srv.name` is "CatalogService", and the second time it's "Stats").
+In fact, we can see that two lines from the call to `console.log` confirm that - the function defined in the module is called twice - once for each service (the first time `srv.name` is 'CatalogService', and the second time it's 'Stats').
 
 
 ### 4. Set a breakpoint and launch in debug mode
@@ -81,9 +81,9 @@ The project already comes with some configuration that works with VS Code for de
 
 It means that you can easily set a breakpoint and launch the service in debug mode using standard VS Code features.
 
-:point_right: Before proceeding with the main part of this step, make sure the service is not running service - go to the integrated terminal and stop it with Ctrl-C.
+:point_right: Before proceeding with the main part of this step, make sure the service is not running - go to the integrated terminal and stop it with Ctrl-C.
 
-:point_right: Now, set a breakpoint on the `console.log` line you added in the custom logic handler, by clicking in the gutter to the left of the line (or hitting F9 when on the line), to set a red mark as shown:
+:point_right: Now, set a breakpoint on the `console.log` line you added in the custom logic handler, by clicking in the margin to the left of the line (or hitting F9 when on the line), to set a red mark as shown:
 
 ![breakpoint set](breakpoint-set.png)
 
@@ -136,7 +136,7 @@ At this point we're confident enough to start adding custom logic, by [registeri
 
 ## Summary
 
-You have added custom logic and learned how to debug a service in VS Code. The options available for adding custom logic are rich and plentiful - we recommend you look further into the documentation for more information.
+You have added custom logic and learned how to debug a service in VS Code. The options available for adding custom logic are rich and plentiful - we recommend you look further into the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html) for more information.
 
 
 ## Questions
@@ -145,5 +145,5 @@ You have added custom logic and learned how to debug a service in VS Code. The o
 
 1. What is the command used in the launch configuration for starting the service in debug mode - is it `cds serve all`?
 
-1. How many times is the function supplied to the `after` hook called?
+1. How many times is the function (that is supplied to the `after` hook) called?
 
