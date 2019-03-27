@@ -81,7 +81,9 @@ Note: You may see the three dots signifying a wait state - you can ignore this.
 
 Now we have the launchpad as a container for our app, let's introduce it gradually.
 
-:point_right: First, add an entry to the sandbox launchpad configuration to define a tile and the app to which it should be connected, by adding this section to the `applications` property (for a "Browse Books" app) in the "sap-ushell-config" (it's in the first `script` element, the surrounding context is shown):
+The first thing to do is to add an entry to the sandbox launchpad configuration to define a tile and the app to which it should be connected.
+
+:point_right: Do this by adding this "browse-books" section to the `applications` property in the "sap-ushell-config" - remember that this is inside the first `script` element in the file (context is shown):
 
 ```javascript
 <script>
