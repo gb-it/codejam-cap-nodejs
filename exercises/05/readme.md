@@ -52,7 +52,7 @@ user@host:~/bookshop
 user@host:~/bookshop
 => cds serve all
 
-[cds] - server listens at http://localhost:4004
+[cds] - server listening at http://localhost:4004
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
@@ -142,7 +142,7 @@ user@host:~/bookshop
 => cds deploy && cds serve all
 > initializing from csv files at ./db/csv...
 
-[cds] - server listens at http://localhost:4004
+[cds] - server listening at http://localhost:4004
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 

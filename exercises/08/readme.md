@@ -54,7 +54,7 @@ You should see a few interesting lines in the output, highlighted here:
 user@host:~/bookshop
 => cds serve all
 
-[cds] - server listens at http://localhost:4004
+[cds] - server listening at http://localhost:4004
 [cds] - serving CatalogService at /catalog - impl: cat-service.js  <--
 [cds] - serving Stats at /stats - impl: cat-service.js             <--
 Service name: CatalogService                                       <--
