@@ -16,9 +16,9 @@ At the end of these steps you will have modified the `CatalogService` in such a 
 
 Custom logic for a given service definition is provided in a JavaScript file that shares the same base name as that definition file. For example, for a service definition file `my-service.cds` the custom logic should be placed in a file `my-service.js`.
 
-This custom logic file can be placed either in the same directory as the service definition file (i.e. side-by-side with it), or in a separate `handlers/` directory. We will use the latter approach.
+This custom logic file is normally placed in the same directory as the service definition file (i.e. side-by-side with it).
 
-:point_right: Create a new directory `handlers/` in the `srv/` directory, and in it, create a new file `cat-service.js`. You should end up with something like this:
+:point_right: Create a new file `cat-service.js` in the `srv/` directory. You should end up with something like this:
 
 ![handlers directory](handlers-dir.png)
 
@@ -56,10 +56,10 @@ user@host:~/bookshop
 
 [cds] - server listens at http://localhost:4004
 [cds] - serving static resources from ./app
-[cds] - serving CatalogService at /catalog - impl: handlers/cat-service.js  <--
-[cds] - serving Stats at /stats - impl: handlers/cat-service.js             <--
-Service name: CatalogService                                                <--
-Service name: Stats                                                         <--
+[cds] - serving CatalogService at /catalog - impl: cat-service.js  <--
+[cds] - serving Stats at /stats - impl: cat-service.js             <--
+Service name: CatalogService                                       <--
+Service name: Stats                                                <--
 [cds] - service definitions loaded from:
 
   app/index.cds
