@@ -83,7 +83,7 @@ This screenshot shows what the collection looks like (it contains multiple POST 
 
 Now it's time to take a look at what the service will show us for these orders. We know we can't look at the `Orders` entityset as it has a `@insertonly` annotation shortcut based restriction, so we turn to our new service `Stats`.
 
-:point_right: Look at the [http://localhost:4004/stats/OrderInfo](OrderInfo) entityset in the `Stats` service. You should see something like this:
+:point_right: Look at the [http://localhost:4004/stats/OrderInfo](http://localhost:4004/stats/OrderInfo) entityset in the `Stats` service. You should see something like this:
 
 ![OrderInfo entityset](orderinfo-entityset.png)
 
