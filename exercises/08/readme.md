@@ -94,14 +94,59 @@ It means that you can easily set a breakpoint and launch the service in debug mo
 
 ![running in debug mode](running-debug.png)
 
+At this point you can explore a little bit.
+
+:point_right: Switch to the Debug Console (next to the integrated terminal) and examine the `srv` object, which reflects a rich API. Try examining the values of the following, by typing them into the Debug Console input area:
+
+```javascript
+srv.name
+```
+
+```javascript
+Object.keys(srv.entities)
+```
+
+```javascript
+srv.path
+```
+
+:point_right: Use the debug control buttons to continue:
+
+![debug control buttons](debug-buttons.png)
 
 
+:point_right: When you've finished exploring, switch back to the integrated terminal and terminate the service.
 
+
+### 5. Add custom logic
+
+At this point we're confident enough to start adding custom logic, by [registering custom handlers](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html).
+
+:point_right: Add the following code after the call to `console.log` in the `cat-service.js` file:
+
+```js
+  if (srv.name === 'CatalogService') {
+    srv.after ('READ', 'Books', each => {
+      if (each.stock > 500) each.title = '(5% off!) ' + each.title
+    })
+  }
+```
+
+:point_right: Restart the service (you can choose to do it normally or in debug mode so you can explore with breakpoints in this code) and check that the titles for certain books have been modified to show a discount, like this:
+
+![discount showing](discount.png)
 
 
 ## Summary
 
+You have added custom logic and learned how to debug a service in VS Code. The options available for adding custom logic are rich and plentiful - we recommend you look further into the documentation for more information.
 
 
 ## Questions
+
+1. What other hooks do you think might be useful in customizing a service?
+
+1. What is the command used in the launch configuration for starting the service in debug mode - is it `cds serve all`?
+
+1. How many times is the function supplied to the `after` hook called?
 
