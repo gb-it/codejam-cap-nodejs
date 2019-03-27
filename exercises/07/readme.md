@@ -22,43 +22,14 @@ service Stats {
         createdAt,
         createdBy,
         modifiedAt,
-        modifiedBy
+        modifiedBy,
+        book,
+        country
     }
 }
 ```
 
 Here the `Stats` service exposes the Orders entity in a read-only fashion as in the `CatalogService`, but uses the `excluding` clause to omit specific properties. These properties are not of interest to the analysis UI so are explicitly left out. Note that it also exposes the information as an entity called `OrderInfo`.
-
-:point_right: Redeploy the service with `cds deploy` and note the message that is emitted, which looks something like this:
-
-```
-[ERROR] at srv/cat-service.cds:10:49-58: Association "Stats.OrderInfo.book" cannot be implicitly redirected: Target "my.bookshop.Books" is not exposed in service "Stats" by any projection
-```
-
-This is because the `Orders` entity has a relationship with the `Books` entity ...
-
-```cds
-entity Orders : cuid, managed {
-  book     : Association to Books;
-  quantity : Integer;
-  country  : Country;
-}
-```
-
-... but we're not exposing the `Books` entity in this service. We're not actually interested in the details of the books that are ordered, so add the `book` property to the list of properties to exclude. While you're at it, also add the `country` property to this list:
-
-```cds
-service Stats {
-    @readonly entity OrderInfo as projection on my.Orders excluding {
-        createdAt,
-        createdBy,
-        modifiedAt,
-        modifiedBy,
-        book,         // <--
-        country       // <--
-    }
-}
-```
 
 :point_right: Now redeploy and start serving the services (`cds deploy && cds serve all`) and check the root document at [http://localhost:4004/](http://localhost:4004/). You should see something like this:
 
