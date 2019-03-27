@@ -203,7 +203,7 @@ For the URL, use the link to this [postman-05.json](https://raw.githubuserconten
 ![Postman request collection](postman-collection.png)
 
 
-### 7. Examine the data in the Orders entityset
+### 7. Examine the data in the Orders entityset
 
 Once you've made a few OData Create operations, have a look at the results in the `Orders` entityset.
 
