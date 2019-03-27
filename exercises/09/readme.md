@@ -8,7 +8,7 @@ In this exercise you'll add a UI layer, by adding annotations that can drive asp
 Following these steps, you'll build a simple Fiori app that sits in a local Fiori launchpad environment, and that serves up book details from the `CatalogService` OData service, helped by annotations that you'll be specifying.
 
 
-### Introduce a basic HTML page to be served for the UI
+### 1. Introduce a basic HTML page to be served for the UI
 
 Following the "convention over configuation" theme, the Node.js flavored CAP will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. If there isn't an `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
 
@@ -38,7 +38,7 @@ If there is an `app/` directory with content, it will serve that instead.
 ![title in browser tab](title-in-browser-tab.png)
 
 
-### Add a Fiori sandbox environment to the UI index page
+### 2. Add a Fiori sandbox environment to the UI index page
 
 To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
@@ -77,7 +77,7 @@ Reloading the browser tab should now show the beginnings of something recognizab
 Note: You may see the three dots signifying a wait state - you can ignore this.
 
 
-### Introduce a basic UI app to the Fiori launchpad
+### 3. Introduce a basic UI app to the Fiori launchpad
 
 Now we have the launchpad as a container for our app, let's introduce it gradually.
 
@@ -105,7 +105,7 @@ Reloading the index page in the browser should show this:
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
 
-### Bring in the main part of the app
+### 4. Bring in the main part of the app
 
 
 As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/browse/webapp`. Let's flesh that out in terms of directories and files now.
@@ -156,7 +156,7 @@ annotate my.Authors with {
 }
 ```
 
-### Create the app directory and the app-specific CDS file
+### 5. Create the app directory and the app-specific CDS file
 
 In the previous step, we have a `using` statement referring to the `my.bookshop` resources from the data model in `db/data-model.cds`. But we also have a `using` statement referring to CDS resources (`fiori-service`) in a directory that doesn't yet exist (`browse`) - that's the directory where our app is to live (we referred to it in a previous step in this exercise in the `url` property of the `sap-ushell-config` section in `index.html`).
 
@@ -177,7 +177,7 @@ The final thing to do in this step is to redeploy because we have added CDS arte
 :point_right: Do this now, with `cds deploy`, before restarting the service.
 
 
-### Create the app artefacts
+### 6. Create the app artefacts
 
 We've done all the hard work now, all that remains is to create just two files that will represent the app. This is because we are using Fiori Elements and driving the UI via annotations on the service.
 
@@ -286,7 +286,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 }
 ```
 
-### Test the app
+### 7. Test the app
 
 The app should be ready to invoke. Reload the Fiori launchpad and select the tile. It should open up into a nice List Report style Fiori Elements app - all driven from the service's annotations:
 
@@ -295,7 +295,7 @@ The app should be ready to invoke. Reload the Fiori launchpad and select the til
 Well done!
 
 
-### Add base internationalization texts
+### 8. Add base internationalization texts
 
 Just to round things off, add some internationalization (i18n) texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
