@@ -12,9 +12,9 @@ After completing these steps you'll have some authors and books data in your ODa
 
 ### 1. Bring sample CSV files in the project
 
-SAP Cloud Application Programming Model adopts a "convention over configuration" approach in many areas, one of which is the automatic recognition and loading of data from CSV files during a deployment. In this step you'll create a `csv/` directory in the `db/` directory, add two CSV files (one for each of the entities) and redeploy. The deployment process will spot the CSV files and load the contents into the tables in the persistence layer.
+The SAP Cloud Application Programming Model adopts a "convention over configuration" approach in many areas, one of which is the automatic recognition and loading of data from CSV files during a deployment. In this step you'll create a `csv/` directory in the `db/` directory, add two CSV files (one for each of the entities) and redeploy. The deployment process will spot the CSV files and load the contents into the tables in the persistence layer.
 
-:point_right: Create a `csv/` directory within the `db/` directory, and copy into it the CSV files (from this repository) [my.bookshop-Books.csv](my.bookshop-Books.csv) and [my.bookshop-Authors.csv](my.bookshop-Authors.csv). Do this either from the command line, or using the user interface in VS Code.
+:point_right: Create a `csv/` directory within the `db/` directory, and copy into it the CSV files (from this repository) [my.bookshop-Books.csv](my.bookshop-Books.csv) and [my.bookshop-Authors.csv](my.bookshop-Authors.csv). Use the "Raw" link from within each of these GitHub resources to get the actual CSV data to download (and don't forget to ensure the `.csv` extension is used for the files that you save).
 
 Your directory structure should then look something like this (the screenshot also shows the content of the two CSV files):
 
@@ -30,7 +30,9 @@ user@host:~/bookshop
 => cds deploy
 ```
 
-This time you should see an extra message:
+Note: You only have to specify the details of the deployment (`--to sqlite:bookshop.db`) once, and you did this in the previous exercise; the details are conveniently saved in `package.json` for subsequent deployments such as this one.
+
+During deployment this time you should see an extra message:
 
 ```
 > initializing from csv files at ./db/csv...
@@ -39,21 +41,21 @@ This time you should see an extra message:
 
 ### 3. Restart the service
 
-:point_right: Now restart the service thus:
+:point_right: Terminate and then restart the service thus:
 
 ```sh
 user@host:~/bookshop
 => cds serve all
 ```
 
-Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Books) entitysets in the OData service will show data in response to query operations.
+Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Authors) entitysets in the OData service will show data in response to query operations.
 
 ![Books and Authors in the OData service](books-and-authors.png)
 
 
 ### 4. Try out some OData query operations
 
-The OData standard describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
+The [OData standard](https://www.odata.org/) describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
 
 :point_right: Try out a few Read and Query operations on the data in the service like this:
 
