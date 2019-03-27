@@ -4,17 +4,17 @@ In this exercise you'll learn how to add custom processing of specific OData ope
 
 Along the way you'll also learn how to use debugging features in VS Code, with the [launch configuration](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations) provided by the `cds init` command that you used in an earlier exercise.
 
-With custom implementation logic you can turn an out of the box service into more or less whatever you need, in a clean and minimal way.
+With custom implementation logic you can turn an out-of-the-box service into more or less whatever you need, in a clean and minimal way.
 
 
 ## Steps
 
-At the end of these steps you will have modified the `CatalogService` in such a way that books with a high stock value will be discounted (and for the sake of simplicity with this simple data model, the discount will be shown in the book's title).
+At the end of these steps you will have modified the `CatalogService` service in such a way that books with a high stock value will be discounted (and for the sake of simplicity with this simple data model, the discount will be shown in the book's title).
 
 
 ### 1. Create the outline of a custom logic handler
 
-Custom logic for a given service definition is provided in a JavaScript file that shares the same base name as that definition file. For example, for a service definition file `my-service.cds` the custom logic should be placed in a file `my-service.js`.
+Custom logic for a given service definition is provided in a JavaScript file that shares the same base name as that service definition file. For example, for a service definition file `my-service.cds` the custom logic should be placed in `my-service.js`.
 
 This custom logic file is normally placed in the same directory as the service definition file (i.e. side-by-side with it).
 
@@ -36,7 +36,7 @@ module.exports = srv => {
 }
 ```
 
-You can see that this custom logic handler file is in the form of a module, which exports a single function. That function (defined using [ES6 arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) has a single parameter `srv` to receive the server object on invocation. We will be making use of the general CDS API so we require load that module (`require('@sap/cds')`) too.
+You can see that this custom logic handler file is in the form of a module, which exports a single function. That function (defined using [ES6 arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) has a single parameter `srv` to receive the server object on invocation. We will be making use of the general CDS API so we load that module (`require('@sap/cds')`) too.
 
 
 ### 3. Run the service
@@ -55,7 +55,6 @@ user@host:~/bookshop
 => cds serve all
 
 [cds] - server listens at http://localhost:4004
-[cds] - serving static resources from ./app
 [cds] - serving CatalogService at /catalog - impl: cat-service.js  <--
 [cds] - serving Stats at /stats - impl: cat-service.js             <--
 Service name: CatalogService                                       <--
