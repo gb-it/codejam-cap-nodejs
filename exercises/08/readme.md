@@ -130,7 +130,7 @@ At this point we're confident enough to start adding custom logic, by [registeri
   }
 ```
 
-:point_right: Restart the service (you can choose to do it normally or in debug mode so you can explore with breakpoints in this code) and check that the titles for certain books have been modified to show a discount, like this:
+:point_right: Restart the service (you can choose to do it normally or in debug mode so you can explore with breakpoints in this code) and check that the [titles for certain books](http://localhost:4004/catalog/Books) have been modified to show a discount, like this:
 
 ![discount showing](discount.png)
 
