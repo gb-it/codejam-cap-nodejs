@@ -116,7 +116,7 @@ srv.path
 :point_right: When you've finished exploring, switch back to the integrated terminal and terminate the service.
 
 
-### Step 5: Add custom logic
+### Step 5: Add custom logic
 
 At this point we're confident enough to start adding custom logic, by [registering custom handlers](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html).
 
