@@ -8,7 +8,7 @@ In this exercise you'll enhance the service definition with annotations that res
 At the end of these steps, your OData service will have different levels of access for each of the entities.
 
 
-### 1. Import a collection of HTTP requests into Postman
+### 1. Import a collection of HTTP requests into Postman
 
 :point_right: In the same way that you did in [exercise 05](../05/), import a collection of HTTP requests into your Postman client via the URL to [postman-06.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/06/postman-06.json) resource.
 
@@ -17,7 +17,7 @@ This contains a number of different requests ready for you to try.
 ![Postman collection](postman-collection-06.png)
 
 
-### 2. Test the existing write access to Books and Authors
+### 2. Test the existing write access to Books and Authors
 
 Right now the `Books` and `Authors` entities are exposed in the `CatalogService` service. In the subsequent steps in this exercise we'll be tightening the restrictions down to read-only. Before we do, let's check to see that, at least currently, we have write access. We'll do that by making a couple of OData Create operations, one to create a new author, and the other to add a book by that author.
 
@@ -56,7 +56,7 @@ user@host:~/bookshop
 Is this just a recommendation that can be overridden? Let's find out.
 
 
-### 4. Attempt to modify the Books and Authors entitysets
+### 4. Attempt to modify the Books and Authors entitysets
 
 We can think of the annotations that we saw in the metadata document as guidelines for a UI, but we want to ensure that the restrictions are really in effect in the service itself. Let's try to create another entry in the `Books` entityset.
 
@@ -86,7 +86,7 @@ It should also fail in a similar way.
 _TIP: If you end up destroying your test data, you can easily restore it by redeploying (`cds deploy`), as the test data will be re-seeded from the CSV files._
 
 
-### Restrict access to the Orders entityset
+### 5. Restrict access to the Orders entityset
 
 In a similar way to how we restricted access to the `Books` and `Authors` entitysets to read-only operations, we will now restrict access to the `Orders` entityset so that orders can only be created, not viewed, amended or removed.
 
