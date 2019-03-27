@@ -54,14 +54,14 @@ In `package.json`, note: not really required: would be replaced by `npx cds depl
 ## 6. Add CSV folder
 `db/csv/my.bookshop-Books.csv`
 ```
-ID,title,author_ID,stock
-421,The Hitch Hiker's Guide To The Galaxy,42,1000
-427,"Life, The Universe And Everything",42,95
-201,Wuthering Heights,101,12
-207,Jane Eyre,107,11
-251,The Raven,150,333
-252,Eleonora,150,555
-271,Catweazle,170,22
+ID,title,stock
+421,The Hitch Hiker's Guide To The Galaxy,1000
+427,"Life, The Universe And Everything",95
+201,Wuthering Heights,12
+207,Jane Eyre,11
+251,The Raven,333
+252,Eleonora,555
+271,Catweazle,22
 ```
 `db/csv/Data.hdbtabledata`
 ```
