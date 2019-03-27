@@ -10,7 +10,7 @@ The scenario is that a service is required to provide an analysis frontend with 
 At the end of these steps, you'll have two OData services both exposing different views on the same underlying data model.
 
 
-### 1. Add a new service definition
+### 1. Add a new service definition
 
 Service definitions can live alongside each other in the same CDS file.
 
@@ -65,7 +65,7 @@ service Stats {
 ![two services](two-services.png)
 
 
-### 2. Create multiple orders
+### 2. Create multiple orders
 
 Now let's create a number of orders, and see what the `OrderInfo` entityset shows us. We can do this quickly using another Postman collection, and using Postman's "Collection Runner" feature.
 
