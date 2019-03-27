@@ -12,7 +12,7 @@ With custom implementation logic you can turn an out of the box service into mor
 At the end of these steps you will have modified the `CatalogService` in such a way that books with a high stock value will be discounted (and for the sake of simplicity with this simple data model, the discount will be shown in the book's title).
 
 
-### 1. Create the outline of a custom logic handler
+### Step 1: Create the outline of a custom logic handler
 
 Custom logic for a given service definition is provided in a JavaScript file that shares the same base name as that definition file. For example, for a service definition file `my-service.cds` the custom logic should be placed in a file `my-service.js`.
 
@@ -23,7 +23,7 @@ This custom logic file is normally placed in the same directory as the service d
 ![handlers directory](handlers-dir.png)
 
 
-### 2. Add some basic custom logic code
+### Step 2: Add some basic custom logic code
 
 In the new file `cat-service.js`, add the following code:
 
@@ -39,7 +39,7 @@ module.exports = srv => {
 You can see that this custom logic handler file is in the form of a module, which exports a single function. That function (defined using [ES6 arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) has a single parameter `srv` to receive the server object on invocation. We will be making use of the general CDS API so we require load that module (`require('@sap/cds')`) too.
 
 
-### 3. Run the service
+### Step 3: Run the service
 
 :point_right: In the same way you've started the service in previous exercises, simply start the service now:
 
@@ -78,7 +78,7 @@ Note that as the relationship between the service definition and the handler is 
 In fact, we can see that in the two lines from the call to `console.log` confirm that - the function defined in the module is called twice - once for each service (the first time `srv.name` is "CatalogService", and the second time it's "Stats").
 
 
-### 4. Set a breakpoint and launch in debug mode
+### Step 4: Set a breakpoint and launch in debug mode
 
 The project already comes with some configuration that works with VS Code for debugging - if you're curious, have a look in the `.vscode/` directory in the root of the project.
 
@@ -118,7 +118,7 @@ srv.path
 :point_right: When you've finished exploring, switch back to the integrated terminal and terminate the service.
 
 
-### 5. Add custom logic
+### Step 5: Add custom logic
 
 At this point we're confident enough to start adding custom logic, by [registering custom handlers](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html).
 
