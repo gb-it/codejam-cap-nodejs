@@ -14,6 +14,8 @@ At the end of these steps, your OData service will have different levels of acce
 
 This contains a number of different requests ready for you to try.
 
+Note: If you still want to use curl, you'll find the command line invocations in the appropriate steps.
+
 ![Postman collection](postman-collection-06.png)
 
 
@@ -22,6 +24,24 @@ This contains a number of different requests ready for you to try.
 Right now the `Books` and `Authors` entities are exposed in the `CatalogService` service. In the subsequent steps in this exercise we'll be tightening the restrictions down to read-only. Before we do, let's check to see that, at least currently, we have write access. We'll do that by making a couple of OData Create operations, one to create a new author, and the other to add a book by that author.
 
 :point_right: In the Postman collection you imported, try out the requests in the folder "**(A) Before @readonly annotations**", running them in the order they're presented (the creation of the new book is for the new author, which needs to exist first).
+
+If you want to use curl instead of Postman, use the following invocations on the command line:
+
+1) Add author "Iain M Banks":
+```
+curl \
+  -d '{"ID": 162, "name": "Iain M Banks"}' \
+  -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Authors
+```
+
+2) Add book "Consider Phlebas":
+```
+curl \
+  -d '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }' \
+  -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Books
+```
 
 Note that the creation requests are successful, and you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
 
@@ -62,6 +82,16 @@ We can think of the annotations that we saw in the metadata document as guidelin
 
 :point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
 
+If you want to use curl instead of Postman, use the following invocation on the command line:
+
+1) Add book "The Player of Games":
+```
+curl \
+  -d '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }' \
+  -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Books
+```
+
 The request is an OData Create request for a new book. You should see that this request is rejected with HTTP status code 405 "Method Not Allowed", with an error like this supplied in the response body:
 
 ```json
@@ -80,6 +110,15 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 ```
 
 :point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.
+
+If you want to use curl instead of Postman, use the following invocation on the command line:
+
+2) Remove book "The Raven":
+```
+curl \
+  -X DELETE \
+  'http://localhost:4004/catalog/Books(251)'
+```
 
 It should also fail in a similar way.
 
@@ -104,9 +143,9 @@ service CatalogService {
 
 :point_right: Redeploy and restart the service (run `cds deploy && cds serve all` in the terminal).
 
-:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset.
+:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset (refer to the step in exercise 05 for the curl invocations if you wish).
 
-![Postman request collection](postman-collection-06.png)
+![Postman request collection](../05/postman-collection.png)
 
 Note at this point that the requests are successful: HTTP status code 201 is returned for each request, along with the newly created entity in the response payload, like this example:
 

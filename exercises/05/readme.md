@@ -196,12 +196,18 @@ If you want to create the Orders entities with curl, here's what you can do. Oth
 
 Order 5 copies of Wuthering Heights (no order ID specified):
 ```
-curl -d '{"book_ID":201,"quantity":5}' -H 'Content-Type: application/json' http://localhost:4004/catalog/Orders
+curl \
+  -d '{"book_ID":201,"quantity":5}' \
+  -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Orders
 ```
 
 Order 9 copies of Life, The Universe And Everything (specifying an order ID):
 ```
-curl -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' -H 'Content-Type: application/json' http://localhost:4004/catalog/Orders
+curl \
+  -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' \
+  -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Orders
 ```
 
 <a name="postman"></a>**Using Postman**
