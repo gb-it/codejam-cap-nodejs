@@ -14,7 +14,7 @@ At the end of these steps, your OData service will have different levels of acce
 
 This contains a number of different requests ready for you to try.
 
-Note: If you still want to use curl, you'll find the command line invocations in the appropriate steps.
+Note: If you still want to use `curl`, you'll find the command line invocations in the appropriate steps.
 
 ![Postman collection](postman-collection-06.png)
 
@@ -25,7 +25,7 @@ Right now the `Books` and `Authors` entities are exposed in the `CatalogService`
 
 :point_right: In the Postman collection you imported, try out the requests in the folder "**(A) Before @readonly annotations**", running them in the order they're presented (the creation of the new book is for the new author, which needs to exist first).
 
-If you want to use curl instead of Postman, use the following invocations on the command line:
+If you want to use `curl` instead of Postman, use the following invocations on the command line:
 
 1) Add author "Iain M Banks":
 ```
@@ -82,7 +82,7 @@ We can think of the annotations that we saw in the metadata document as guidelin
 
 :point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
 
-If you want to use curl instead of Postman, use the following invocation on the command line:
+If you want to use `curl` instead of Postman, use the following invocation on the command line:
 
 1) Add book "The Player of Games":
 ```
@@ -111,7 +111,7 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 
 :point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.
 
-If you want to use curl instead of Postman, use the following invocation on the command line:
+If you want to use `curl` instead of Postman, use the following invocation on the command line:
 
 2) Remove book "The Raven":
 ```
@@ -143,7 +143,7 @@ service CatalogService {
 
 :point_right: Redeploy and restart the service (run `cds deploy && cds serve all` in the terminal).
 
-:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset (refer to the step in exercise 05 for the curl invocations if you wish).
+:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset (refer to the step in exercise 05 for the `curl` invocations if you wish).
 
 ![Postman request collection](../05/postman-collection.png)
 

@@ -190,7 +190,7 @@ Content-Length: 306
 {"@odata.context":"$metadata#Orders/$entity","@odata.metadataEtag":"W/\"s2St6s/UTUxSfYEFAcOmOIuoSKQn7qxgEm65c/QqjAs=\"","ID":"d9a2ffd5-ecc4-47aa-a91f-e88f70b7adf9","modifiedAt":null,"createdAt":"2019-03-25T13:47:38Z","createdBy":"anonymous","modifiedBy":null,"quantity":5,"book_ID":421,"country_code":null}
 ```
 
-If you want to create the Orders entities with curl, here's what you can do. Otherwise, skip to the [Using Postman](#postman) section.
+If you want to create the Orders entities with `curl`, here's what you can do. Otherwise, skip to the [Using Postman](#postman) section.
 
 <a name="curl"></a>**Using curl**
 

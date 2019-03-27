@@ -69,7 +69,7 @@ service Stats {
 
 Now let's create a number of orders, and see what the `OrderInfo` entityset shows us. We can do this quickly using another Postman collection, and using Postman's "Collection Runner" feature.
 
-Note: If you want to do this using curl, jump to the [using curl](#curl) section.
+Note: If you want to do this using `curl`, jump to the [using curl](#curl) section.
 
 **Using Postman**
 
