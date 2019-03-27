@@ -17,6 +17,7 @@ Before the CodeJam day, participants should ensure they have the following insta
 - git : [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git)
 - Postman : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
 - The Cloud Foundry command line tool cf : [https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : [https://tools.hana.ondemand.com/#cloud](https://tools.hana.ondemand.com/#cloud)
 
 With regards to Node, we recommend the latest LTS (long term support) version. After installation, please check that you can start node from the command line, and also successfully install packages with the included `npm` command.
 
