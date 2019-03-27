@@ -166,7 +166,7 @@ Put the new entity through its paces by performing some OData Create operations 
 
 An OData Create operation (request and response) to insert a new order looks in raw form like this:
 
-**Request**
+Request:
 ```
 POST /catalog/Orders HTTP/1.1
 Host: localhost:4004
@@ -176,7 +176,7 @@ Content-Length: 29
 {"book_ID":421, "quantity":5}
 ```
 
-**Response**
+Response:
 ```
 HTTP/1.1 201 Created
 X-Powered-By: Express
@@ -189,6 +189,22 @@ Content-Length: 306
 
 {"@odata.context":"$metadata#Orders/$entity","@odata.metadataEtag":"W/\"s2St6s/UTUxSfYEFAcOmOIuoSKQn7qxgEm65c/QqjAs=\"","ID":"d9a2ffd5-ecc4-47aa-a91f-e88f70b7adf9","modifiedAt":null,"createdAt":"2019-03-25T13:47:38Z","createdBy":"anonymous","modifiedBy":null,"quantity":5,"book_ID":421,"country_code":null}
 ```
+
+If you want to create the Orders entities with curl, here's what you can do. Otherwise, skip to the [Using Postman](#postman) section.
+
+<a name="curl"></a>**Using curl**
+
+Order 5 copies of Wuthering Heights (no order ID specified):
+```
+curl -d '{"book_ID":201,"quantity":5}' -H 'Content-Type: application/json' http://localhost:4004/catalog/Orders
+```
+
+Order 9 copies of Life, The Universe And Everything (specifying an order ID):
+```
+curl -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' -H 'Content-Type: application/json' http://localhost:4004/catalog/Orders
+```
+
+<a name="postman"></a>**Using Postman**
 
 There are some OData Create operations for this Orders entity prepared for you in the form that can be imported into Postman. Do that now:
 
