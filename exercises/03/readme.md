@@ -180,7 +180,7 @@ Note: If you're wondering what has been updated in `package.json`, have a look. 
 
 At this point you should have a new file `bookshop.db` in the project folder.
 
-:point_right: Have a look inside it with the `sqlite3` commandline utility; use the `.tables` command to see what has been created:
+:point_right: Have a look inside it with the `sqlite3` command line utility; use the `.tables` command to see what has been created:
 
 ```sh
 user@host:~/bookshop
@@ -194,7 +194,7 @@ sqlite> .quit
 user@host:~/bookshop
 ```
 
-Note: The `sqlite3` commandline utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../prerequisites.md).
+Note: The `sqlite3` command line utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../prerequisites.md).
 
 
 ### 6. Dig into the link between the CDS definitions and the artefacts in the database

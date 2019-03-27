@@ -1,4 +1,4 @@
-# Exercise 08 - Adding custom service implementation logic
+# Exercise 08 - Adding custom logic, and debugging
 
 In this exercise you'll learn how to add custom processing of specific OData operations on your services. It's done by adding [custom implementation logic](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/68af515a26d944c38d81fd92ad33681e.html) (in JavaScript) via well-defined hooks into the service API.
 

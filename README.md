@@ -25,5 +25,5 @@ Here's an overview of the exercises in this CodeJam.
 - [05 - Adding a second entity, using common definition features](exercises/05)
 - [06 - Enhancing the service with annotations](exercises/06/)
 - [07 - Defining a second service](exercises/07/)
-- [08 - Adding custom service implementation logic](exercises/08/)
+- [08 - Adding custom logic, and debugging](exercises/08/)
 - [09 - Introducing an app at the UI layer](exercises/09/)

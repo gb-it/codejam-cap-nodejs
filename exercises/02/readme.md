@@ -9,16 +9,16 @@ With Core Data & Services (CDS) as the definition language and CAP as the framew
 
 ## Steps
 
-After completing these steps you'll be familiar with how you can use the CDS commandline tool to initialize a project with an OData service.
+After completing these steps you'll be familiar with how you can use the CDS command line tool to initialize a project with an OData service.
 
 
 ### 1. Initialize a new CAP project
 
-The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS commandline tool `cds` which you installed in [exercise 01](../01/).
+The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS command line tool `cds` which you installed in [exercise 01](../01/).
 
 The `cds` tool should be available in your executable path, having been installed as part of the Node.js `@sap/cds` package in the [previous exercise](../01/).
 
-:point_right: First, explore the `cds` commandline tool by executing it with no parameters; you will see what options are available:
+:point_right: First, explore the `cds` command line tool by executing it with no parameters; you will see what options are available:
 
 ```sh
 user@host:~
@@ -119,12 +119,12 @@ Briefly, the directories and contents can be described thus:
 
 | Directory      | Contents |
 | -------------- | -------- |
-| `.vscode`      | VS Code specific files for launch configurations (useful for debugging) |
+| `.vscode`      | VS Code specific files for launch configurations (useful for debugging, which we will cover in [exercise 08](../08/)) |
 | `db`           | Where the data models (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules db` option will have a basic data model file in the form of `data-model.cds` with a small sample definition, like here |
 | `node_modules` | This is the normal place where NPM packages (modules) are to be found in a Node.js based project |
 | `srv`          | Where the service definitions (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules srv` option will have a basic service definition file in the form of `cat-service.cds` with a small service definition, like here |
 
-Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project and a readme file.
+Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project) and a readme file.
 
 
 ### 4. Examine the data model and service definition files
@@ -146,7 +146,7 @@ This should open up the terminal at the bottom of VS Code like this:
 
 ![integrated terminal in view](integrated-terminal-in-view.png)
 
-:point_right: In the integrated terminal, use the `cds` commandline tool with the `serve` command to start serving. Specify the service definition directory `srv` in the invocation:
+:point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify the service definition directory `srv` in the invocation:
 
 ```sh
 user@host:~/bookshop
@@ -198,3 +198,5 @@ With a single command, you've initialized a basic OData service project and with
 1. What is the difference between the data model and the service definition? Why do we need both?
 
 1. What are the annotations in the metadata document describing, and where do they come from?
+
+1. What does the Books entityset resource contain right now?
