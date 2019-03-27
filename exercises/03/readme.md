@@ -10,7 +10,7 @@ After completing these steps you'll have a slightly more complex OData service, 
 
 ### 1. Add a new Authors entity to the model
 
-Currently the data model is extremely simple. In this step you'll add a second entity 'Authors'.
+Currently the data model is extremely simple. In this step you'll add a second entity `Authors`.
 
 :point_right: Open the `db/data-model.cds` file in VS Code and add a new entity definition, after the `Books` entity, thus:
 
@@ -41,7 +41,9 @@ You're right. It's not there.
 
 While there is now a second entity definition in the data model, it is not exposed in the existing service. In this step, you'll remedy that.
 
-:point_right: Open up the `srv/cat-service.cds` file and add a second entity to the `CatalogService` definition. While you're there, remove the `@readonly` annotation that you see against the existing entity in the service - we will look at these annotations in a later exercise. This is what the contents of `srv/cat-service.cds` should look like after you've added the new entity and removed the annotation:
+:point_right: Open up the `srv/cat-service.cds` file and add a second entity to the `CatalogService` definition. While you're there, remove the `@readonly` annotation that you see against the existing entity in the service - we will look at these annotations in a later exercise.
+
+This is what the contents of `srv/cat-service.cds` should look like after you've added the new entity and removed the annotation:
 
 ```cds
 using my.bookshop as my from '../db/data-model';
@@ -56,14 +58,14 @@ service CatalogService {
 
 ![Books and Authors entities in the metadata document](books-authors-metadata-document.png)
 
-This is nice, but there's something fundamental that's missing.
+This is nice, but there's something fundamental that's missing and preventing this data model from being useful.
 
 
-### 3. Add a relationship between the Books and Authors entities.
+### 3. Add a relationship between the Books and Authors entities
 
-The Books and Authors entities are standalone and currently are not related to each other. This is not ideal, so in this step you'll fix that by adding a relationship in the form of an [association](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9ead8e4701d04848a6fdc84356723a52.html).
+The `Books` and `Authors` entities are standalone and currently are not related to each other. This is not ideal, so in this step you'll fix that by adding a relationship in the form of an [association](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9ead8e4701d04848a6fdc84356723a52.html).
 
-:point_right: Return to the `db/data-model.cds` file and add an association from the Books entity to the Authors entity, bearing in mind the simplified assumption that a book has a single author. The association should describe a new `author` property in the Books entity like this:
+:point_right: Return to the `db/data-model.cds` file and add an association from the `Books` entity to the `Authors` entity, bearing in mind the simplified assumption that a book has a single author. The association should describe a new `author` property in the `Books` entity like this:
 
 ```cds
 entity Books {
@@ -78,9 +80,9 @@ Note that as you type, the CDS Language Services extension that you installed in
 
 ![command completion](command-completion.png)
 
-This `Association to Authors` relationship will allow a consumer to navigate from a Book to the related Author, but not from an Author to their Books. Let's fix that now by adding a second association.
+This `Association to Authors` relationship will allow a consumer to navigate from a book to the related author, but not from an author to their books. Let's fix that now by adding a second association.
 
-:point_right: To the Authors entity, add a `books` property thus:
+:point_right: To the `Authors` entity, add a `books` property thus:
 
 ```cds
 entity Authors {
@@ -90,18 +92,20 @@ entity Authors {
 }
 ```
 
-Note that this is a 'to-many' relationship. Don't forget to save the file.
+Note that this is a 'to-many' relationship.
 
-:point_right: Restart the service and check the metadata document again. There should now be OData navigation properties defined between the two entities, like this:
+Don't forget to save the file.
+
+:point_right: Restart the service and check the [metadata document](http://localhost:4004/catalog/$metadata) again. There should now be OData navigation properties defined between the two entities, like this:
 
 ![navigation properties](navigation-properties.png)
 
 
 ### 4. Deploy the service to a persistence layer
 
-As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now. Instead, we'll use a real database in the form of [https://sqlite.org](https://sqlite.org) and deploy the data model and service definition to it.
+As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-:point_right: The `@sap/cds` package makes use of the NPM [sqlite3](https://www.npmjs.com/package/sqlite3) package, and this needs to be installed in the project first. Do this by using `npm` to install it locally (rather than globally):
+:point_right: The `@sap/cds` package makes use of the NPM [sqlite3](https://www.npmjs.com/package/sqlite3) package, and this needs to be installed in the project first. Do this by using `npm` to install it locally to the project (rather than globally):
 
 ```sh
 user@host:~/bookshop
@@ -124,7 +128,7 @@ added 101 packages from 88 contributors and audited 326 packages in 5.601s
 found 0 vulnerabilities
 ```
 
-Note: The `--save-dev` option here (short form: `-D`) causes the information about the dependency to the `sqlite3` package to be written to a separate section of the `package.json` file, that describes dependencies relating to the development process rather than the runtime operation. Here we're assuming that SQLite is being employed for development and testing purposes only.
+Note: The `--save-dev` option here (short form: `-D`) causes the information about the dependency to the `sqlite3` package to be written to a separate section of the `package.json` file, which describes dependencies relating to the development process rather than the runtime operation. Here we're assuming that SQLite is being employed for development and testing purposes only.
 
 :point_right: Explore the `cds deploy` command like this:
 
@@ -141,9 +145,9 @@ SYNOPSIS
     cds.requires.db.  Same for the database.
 ```
 
-Use this command to deploy the data model and service definition to a new SQLite based database (databases with SQLite are simply files on the local filesystem).
+Use this command to deploy the data model and service definition to a new SQLite-based database (databases with SQLite are simply files on the local filesystem).
 
-:point_right: Cause the deployment to a new SQLite database like this:
+:point_right: Deploy to a new SQLite database like this:
 
 ```
 user@host:~
@@ -180,6 +184,8 @@ Note: If you're wondering what has been updated in `package.json`, have a look. 
 
 At this point you should have a new file `bookshop.db` in the project folder.
 
+Note: There is no hard requirement to name the SQLite database file `bookshop.db` here - it is just done for neatness and consistency.
+
 :point_right: Have a look inside it with the `sqlite3` command line utility; use the `.tables` command to see what has been created:
 
 ```sh
@@ -194,12 +200,12 @@ sqlite> .quit
 user@host:~/bookshop
 ```
 
-Note: The `sqlite3` command line utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../prerequisites.md).
+Note: The `sqlite3` command line utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../../prerequisites.md).
 
 
 ### 6. Dig into the link between the CDS definitions and the artefacts in the database
 
-Looking at the tables in the `bookshop.db` database we see that there are two pairs of names; one prefixed with `CatalogService` and one prefixed with `my_bookshop`. If you guessed that the `CatalogService`-prefixed artefacts relate to the service definition and the `my_bookshop`-prefixed artefacts relate to the data model, you are correct.
+Looking at the tables in the `bookshop.db` database we see that there are two pairs of names; one pair prefixed with `CatalogService` and the other pair prefixed with `my_bookshop`. If you guessed that the `CatalogService`-prefixed artefacts relate to the service definition and the `my_bookshop`-prefixed artefacts relate to the data model, you are correct.
 
 In this step you'll look briefly at what these artefacts are and how they are created.
 
@@ -284,3 +290,5 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 1. What are other possible targets in the compilation context?
 
 1. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
+
+1. Even though the `Authors` entity definition finally appeared in the metadata file at the end of step 2, you might have noticed that the content of the metadata document looked shorter overall than it did. What disappeared?
