@@ -10,7 +10,7 @@ Following these steps, you'll build a simple Fiori app that sits in a local Fior
 
 ### 1. Introduce a basic HTML page to be served for the UI
 
-Following the "convention over configuation" theme, the Node.js flavored CAP will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. If there isn't an `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
+Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. If there isn't an `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
 
 ![the "Welcome to cds.services" landing page](../07/two-services.png)
 
@@ -158,9 +158,23 @@ annotate my.Authors with {
 }
 ```
 
+Note: You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this later, you can ignore the warnings for now.
+
 ### 5. Create the app directory and the app-specific CDS file
 
-In the previous step, we have a `using` statement referring to the `my.bookshop` resources from the data model in `db/data-model.cds`. But we also have a `using` statement referring to CDS resources (`fiori-service`) in a directory that doesn't yet exist (`browse`) - that's the directory where our app is to live (we referred to it in a previous step in this exercise in the `url` property of the `sap-ushell-config` section in `index.html`).
+In the previous step, we have a `using` statement in the CDS file that refers to the `my.bookshop` resources from the data model in `db/data-model.cds`:
+
+```cds
+using my.bookshop as my from '../db/data-model';
+```
+
+But we also have a `using` statement referring to CDS resources (`fiori-service`):
+
+```
+using from './browse/fiori-service';
+```
+
+This is in a directory that doesn't yet exist (`browse`) - that's the directory where our app is to live: (we referred to it in a previous step in this exercise in the `url` property of the `sap-ushell-config` section in `index.html`).
 
 :point_right: Create the `browse/` directory as a child of the `app/` directory.
 
@@ -176,7 +190,7 @@ At this stage your `app/` directory structure should look like this:
 
 The final thing to do in this step is to redeploy because we have added CDS artefacts.
 
-:point_right: Do this now, with `cds deploy`, before restarting the service.
+:point_right: Do this now, with `cds deploy`, before restarting the service with `cds serve all`.
 
 
 ### 6. Create the app artefacts
@@ -187,7 +201,7 @@ We've done all the hard work now, all that remains is to create just two files t
 
 ![webapp directory](webapp-dir.png)
 
-:point_right: In this new `webapp/` directory, create a simple `Component.js` file with the following content:
+:point_right: In this new `webapp/` directory, create a simple `Component.js` file (note the capitalization) with the following content:
 
 ```js
 sap.ui.define(
@@ -299,7 +313,7 @@ Well done!
 
 ### 8. Add base internationalization texts
 
-Just to round things off, add some internationalization (i18n) texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
+Just to round things off, add some i18n texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
 :point_right: Create a directory called `i18n/` as a direct child of the `app/` directory, and create a file `i18n.properties` inside it, with the following content:
 
@@ -318,12 +332,11 @@ Books=Books
 
 ## Summary
 
-While this was a little intense as far as creation of artefacts was concerned, we hope you agree that for little effort, and based on a great foundation, a lot of power can be wielded!
-
+While this was a little intense as far as creation of artefacts was concerned, we hope you agree that for little effort, and based on a great foundation, a lot can be achieved!
 
 ## Questions
 
-1. Where would further apps logically live in this logical structure?
+1. Where might further apps be defined live in this logical structure?
 
 1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
 
