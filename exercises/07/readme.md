@@ -50,11 +50,11 @@ This screenshot shows what the collection looks like (it contains multiple POST 
 
 ![Postman collection](postman-collection-07.png)
 
-:point_right: After importing this collection, click the arrow to the right of the collection name to expand the options as shown, and select the "Run" button which will open up the "Collection Runner" window:
+:point_right: After importing this collection, click the arrow to the right of the collection name to expand the options as shown, and select the small blue "Run" button which will open up the "Collection Runner" window:
 
 ![Collection Runner window](collection-runner.png)
 
-:point_right: Use the "Run ..." button to execute all the requests - a results window should appear.
+:point_right: Use the large blue "Run ..." button to execute all the requests - a results window should appear.
 
 <a name="curl"></a>**Using curl**
 
