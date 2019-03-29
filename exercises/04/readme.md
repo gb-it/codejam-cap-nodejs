@@ -76,4 +76,3 @@ Your OData service now has sample data that you can access via OData operations.
 
 1. Does the order of the fields defined in the CSV files have to match the order of the properties defined in the entities in the data model?
 
-1. What are some of the differences between OData V2 and V4 with respect to query options?
