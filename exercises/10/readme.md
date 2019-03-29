@@ -53,7 +53,7 @@ In `package.json`, note: not really required: would be replaced by `npx cds depl
 ## 5. Add content to the CSV folder
 `db/csv/my.bookshop-Books.csv`
 ```
-ID,title,stock
+ID,TITLE,STOCK
 421,The Hitch Hiker's Guide To The Galaxy,1000
 427,"Life, The Universe And Everything",95
 201,Wuthering Heights,12
