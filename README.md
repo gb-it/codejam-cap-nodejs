@@ -28,3 +28,8 @@ Here's an overview of the exercises in this CodeJam.
 - [Exercise 08 - Adding custom logic, and debugging](exercises/08/)
 - [Exercise 09 - Introducing an app at the UI layer](exercises/09/)
 - [Exercise 10 - (Bonus) Deploy a simple project to the Cloud](exercises/10/)
+
+
+## Feedback
+
+At the end of this CodeJam, we would be really grateful if you could spend a minute providing us with your thoughts in this [feedback form](https://bit.ly/codejam-cap-nodejs-feedback). Thank you.
