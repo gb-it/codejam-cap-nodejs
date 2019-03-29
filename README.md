@@ -18,13 +18,13 @@ At the end of each exercise there are questions; these are designed to help you 
 
 Here's an overview of the exercises in this CodeJam.
 
-- [01 - Installing the CAP related tools](exercises/01/)
-- [02 - Creating a new CAP project](exercises/02/)
-- [03 - Enhancing the project & adding persistence](exercises/03/)
-- [04 - Adding data & testing OData operations](exercises/04)
-- [05 - Adding a second entity, using common definition features](exercises/05)
-- [06 - Enhancing the service with annotations](exercises/06/)
-- [07 - Defining a second service](exercises/07/)
-- [08 - Adding custom logic, and debugging](exercises/08/)
-- [09 - Introducing an app at the UI layer](exercises/09/)
-- [10 - (Bonus) Deploy a simple project to the Cloud](exercises/10/)
+- [Exercise 01 - Installing the CAP related tools](exercises/01/)
+- [Exercise 02 - Creating a new CAP project](exercises/02/)
+- [Exercise 03 - Enhancing the project & adding persistence](exercises/03/)
+- [Exercise 04 - Adding data & testing OData operations](exercises/04)
+- [Exercise 05 - Adding a second entity, using common definition features](exercises/05)
+- [Exercise 06 - Enhancing the service with annotations](exercises/06/)
+- [Exercise 07 - Defining a second service](exercises/07/)
+- [Exercise 08 - Adding custom logic, and debugging](exercises/08/)
+- [Exercise 09 - Introducing an app at the UI layer](exercises/09/)
+- [Exercise 10 - (Bonus) Deploy a simple project to the Cloud](exercises/10/)

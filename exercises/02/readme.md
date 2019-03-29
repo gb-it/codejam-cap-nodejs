@@ -158,7 +158,7 @@ Note: You can also specify simply `cds serve all` to have `cds` look for appropr
 You should see output similar to this:
 
 ```
-[cds] - server listens at http://localhost:4004
+[cds] - server listening at http://localhost:4004
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 

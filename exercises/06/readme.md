@@ -14,7 +14,7 @@ At the end of these steps, your OData service will have different levels of acce
 
 This contains a number of different requests ready for you to try.
 
-Note: If you still want to use `curl`, you'll find the command line invocations in the appropriate steps.
+Note: If you still want to use `curl`, you'll find the command line invocations in the appropriate steps below.
 
 ![Postman collection](postman-collection-06.png)
 
@@ -43,14 +43,14 @@ curl \
   http://localhost:4004/catalog/Books
 ```
 
-Note that the creation requests are successful, and you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
+Check that the creation requests are successful, and that you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
 
 
 ### 3. Restrict access to the Books and Authors entities
 
 Now, we want to only allow read-only operations on the master data. This can be achieved with OData annotations that are encapsulated into a convenient `@readonly` [shortcut](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/227cbf1a3ec24075a3aaaf6202f88be5.html).
 
-:point_right: Add this to each of the `Books` and `Authors` specifications in the `CatalogService` thus:
+:point_right: Add this `@readonly` shortcut to each of the `Books` and `Authors` specifications in the `CatalogService` thus:
 
 ```cds
 service CatalogService {
@@ -60,7 +60,7 @@ service CatalogService {
 }
 ```
 
-What does this do, precisely?
+What does this do, precisely? Let's find out.
 
 :point_right: First save the file then redeploy & restart the service, like you did in [exercise 05](../05/):
 
@@ -127,11 +127,11 @@ _TIP: If you end up destroying your test data, you can easily restore it by rede
 
 ### 5. Restrict access to the Orders entityset
 
-In a similar way to how we restricted access to the `Books` and `Authors` entitysets to read-only operations, we will now restrict access to the `Orders` entityset so that orders can only be created, not viewed, amended or removed.
+In a similar way to how we restricted access to the `Books` and `Authors` entitysets to read-only operations, we will now restrict access to the `Orders` entityset so that orders can only be created, and not viewed, amended or removed.
 
 As you might have guessed, this is achieved via the `@insertonly` annotation shortcut.
 
-:point_right: In the `CatalogService` service definition in `srv/cat-service.cds`, annotate the `Orders` entity with `@readonly` so it looks like this:
+:point_right: In the `CatalogService` service definition in `srv/cat-service.cds`, annotate the `Orders` entity with `@insertonly` so it looks like this:
 
 ```cds
 service CatalogService {
@@ -186,7 +186,7 @@ The operation should be denied, and you'll receive something like this in the bo
 
 ## Summary
 
-In this exercise you used shortcut annotations to restrict access to the entities expose in the service definition.
+In this exercise you used shortcut annotations to restrict access to the entities expose in the service definition. The annotations provide not only information to be used by consumers (such as frontends) but also control access at the HTTP level.
 
 
 ## Questions
