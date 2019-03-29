@@ -24,9 +24,9 @@ In `package.json`
 ```
 "setup": "npm i && mbt init",
 "start": "cds run",
-"build": "cds build/all --clean",
+"build": "cds build/all",
 "deploy:cds": "cds deploy",
-"build:cf": "cds build/all --clean && npm run build:cf:workarounds",
+"build:cf": "cds build/all && npm run build:cf:workarounds",
 "build:cf:workarounds": "cp db/csv/Data.hdbtabledata db/src/gen/csv/",
 "build:mta": "npm run build:cf && make -f Makefile.mta p=cf",
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
@@ -128,14 +128,14 @@ npm start
 }
 ```
 
-##9. Update the plugin version
+## 9. Update the plugin version
 `db/src/.hdiconfig`
 ```
 "plugin_version": "12.1.0",
 ```
 
 
-## 7. Deploy the project to SAP Cloud Platform
+## 10. Deploy the project to SAP Cloud Platform
 ```
 npm run deploy:cf
 ```

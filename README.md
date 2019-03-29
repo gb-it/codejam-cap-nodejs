@@ -27,3 +27,4 @@ Here's an overview of the exercises in this CodeJam.
 - [07 - Defining a second service](exercises/07/)
 - [08 - Adding custom logic, and debugging](exercises/08/)
 - [09 - Introducing an app at the UI layer](exercises/09/)
+- [10 - (Bonus) Deploy a simple project to the Cloud](exercises/10/)
