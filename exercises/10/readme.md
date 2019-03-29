@@ -1,8 +1,8 @@
 # Exercise 10
 
 Core changes:
-*  npx over global module
-*  hana deployment option
+*  SAP HANA deployment option
+*  `npx` over global module
 *  leverage npm scripts
 *  capitalize table columns in csv
 
@@ -87,18 +87,18 @@ ID,TITLE,STOCK
 
 ```
 
-## 6. Run the project locally (as before)
+
+## 6. Install the MTA build tool
+Unfortunately not yet available as local module
+```
+npm i -g mbt
+```
+
+## 7. Run the project locally (as before)
 ```
 npm run setup
 npm run deploy:cds
 npm start
-```
-
-
-## 7. Install the mtar build tool
-Unfortunately not yet available as local module
-```
-npm i -g mbt
 ```
 
 ## 8. Add package.json to srv
