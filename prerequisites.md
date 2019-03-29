@@ -16,6 +16,7 @@ Before the CodeJam day, participants should ensure they have the following insta
 - SQLite : [https://sqlite.org/index.html](https://sqlite.org/index.html)
 - git : [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git)
 - Postman : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
+- Make
 - The Cloud Foundry command line tool cf : [https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 - The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : [https://tools.hana.ondemand.com/#cloud](https://tools.hana.ondemand.com/#cloud)
 

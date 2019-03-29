@@ -1,25 +1,24 @@
 # Exercise 10
 
 Core changes:
-*  npx over global module
-*  hana deployment option
+*  SAP HANA deployment option
+*  `npx` over global module
 *  leverage npm scripts
 *  capitalize table columns in csv
 
-
-## 1. Install the mtar build tool
-Unfortunately not yet available as local module
+#Local vs global modules
 ```
-npm i -g mbt
+npm view @sap/cds
+npm view @sap/cds versions
 ```
 
-## 2. Create the project
+## 1. Create the project
 ```
 npx @sap/cds init  --modules db,srv --insecure --mta  --db-technology hana sitFra
 code sitFra/
 ```
 
-## 3. Add npm scripts
+## 2. Add npm scripts to
 In `package.json`
 ```
 "setup": "npm i && mbt init",
@@ -31,7 +30,7 @@ In `package.json`
 "build:mta": "npm run build:cf && make -f Makefile.mta p=cf",
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
 ```
-## 4. Add SQLite as a local DB
+## 3. Add SQLite as a local DB
 In `package.json`, note: not really required: would be replaced by `npx cds deploy --to sqlite:bookshop.db` anyway
 ```
 "db": {
@@ -45,16 +44,16 @@ In `package.json`, note: not really required: would be replaced by `npx cds depl
     }
 }
 ```
-## 5. Add sqlite module
+## 4. Add sqlite module
 ```
 "devDependencies": {
   "sqlite3": "^4.0.6"
 }
 ```
-## 6. Add CSV folder
+## 5. Add content to the CSV folder
 `db/csv/my.bookshop-Books.csv`
 ```
-ID,title,stock
+ID,TITLE,STOCK
 421,The Hitch Hiker's Guide To The Galaxy,1000
 427,"Life, The Universe And Everything",95
 201,Wuthering Heights,12
@@ -88,13 +87,19 @@ ID,title,stock
 
 ```
 
+
+## 6. Install the MTA build tool
+Unfortunately not yet available as local module
+```
+npm i -g mbt
+```
+
 ## 7. Run the project locally (as before)
 ```
 npm run setup
 npm run deploy:cds
 npm start
 ```
-
 
 ## 8. Add package.json to srv
 `srv/package.json`
