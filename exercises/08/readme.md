@@ -28,7 +28,6 @@ This custom logic file is normally placed in the same directory as the service d
 In the new file `cat-service.js`, add the following code:
 
 ```javascript
-const cds = require('@sap/cds')
 module.exports = srv => {
 
   console.log('Service name:', srv.name)
