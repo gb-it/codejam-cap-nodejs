@@ -90,13 +90,13 @@ The first thing to do is to add an entry to the sandbox launchpad configuration 
     window["sap-ushell-config"] = {
         defaultRenderer: "fiori2",
         applications: {
-            "browse-books": {
-                title: "Browse Books",
-                description: "Bookshop",
-                additionalInformation: "SAPUI5.Component=bookshop",
-                applicationType : "URL",
-                url: "/browse/webapp"
-            }
+            "browse-books": {                                        // <--
+                title: "Browse Books",                               // <--
+                description: "Bookshop",                             // <--
+                additionalInformation: "SAPUI5.Component=bookshop",  // <--
+                applicationType : "URL",                             // <--
+                url: "/browse/webapp",                               // <--
+            }                                                        // <--
         }
     };
 </script>
