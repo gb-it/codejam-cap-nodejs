@@ -93,7 +93,9 @@ It means that you can easily set a breakpoint and launch the service in debug mo
 
 At this point you can explore a little bit.
 
-:point_right: Switch to the Debug Console (next to the integrated terminal) and examine the `srv` object, which reflects a rich API. Try examining the values of the following, by typing them into the Debug Console input area:
+:point_right: Switch to the Debug Console (next to the integrated terminal) and examine the `srv` object, which reflects a rich API. Try examining the values of the following, by typing them into the Debug Console input area.
+
+![Debug Console](debug-console.png)
 
 ```javascript
 srv.name
