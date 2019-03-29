@@ -99,6 +99,6 @@ It's easy to explore building different views on the same underlying data model,
 
 ## Questions
 
-1. Why is it better to specify properties to _exclude_, rather than properties to _include_?
+1. Why might it be better to specify properties to _exclude_, rather than properties to _include_?
 
 1. What did the order creation HTTP requests look like - which service was used, and why?
